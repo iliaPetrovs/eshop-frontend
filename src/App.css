@@ -1,0 +1,11 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  border-radius: 10px;
+}
+
+a:hover {
+  background-color: lavender;
+}
