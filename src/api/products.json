@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Mouf Ita Bag",
+    "desc": "Ita bag with da mouf",
+    "price": 23.99,
+    "category": "Bag",
+    "imageUrl": "http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg",
+    "stock": 98
+  },
+  {
+    "id": 2,
+    "name": "Bean Ita Bag",
+    "desc": "Bean bag with da beans",
+    "price": 26.99,
+    "category": "Bag",
+    "imageUrl": "http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg",
+    "stock": 56
+  },
+  {
+    "id": 3,
+    "name": "Spine Chill Sticker",
+    "desc": "Spine chill sticker from DBD",
+    "price": 9.99,
+    "category": "Sticker",
+    "imageUrl": "http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg",
+    "stock": 24
+  },
+  {
+    "id": 4,
+    "name": "Mori Me Patch",
+    "desc": "Mori me patch from DBD",
+    "price": 12.99,
+    "category": "Patch",
+    "imageUrl": "http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg",
+    "stock": 0
+  },
+  {
+    "id": 5,
+    "name": "Mori Me Sticker",
+    "desc": "Mori me sticker from DBD",
+    "price": 9.99,
+    "category": "Sticker",
+    "imageUrl": "http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg",
+    "stock": 0
+  }
+]

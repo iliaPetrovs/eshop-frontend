@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ShopItem() {
+export default function Success() {
     return (
         <div>
-            
+            Success!
         </div>
     )
 }
