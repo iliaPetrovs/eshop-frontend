@@ -1,5 +1,5 @@
 * {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   box-sizing: border-box;
   /* background: rgb(250, 238, 251); */
 }
@@ -11,6 +11,10 @@ a {
 /* Carousel */
 .carousel {
   cursor: grab;
+}
+
+.carousel-item {
+  height: 600px;
 }
 
 /* Navbar */
@@ -61,7 +65,6 @@ a {
 
 /* Carousel */
 
-
 /* Item Slider */
 .product-box {
   /* background-color: gainsboro; */
@@ -81,17 +84,17 @@ a {
 }
 
 .separator {
-  width: 100%; 
-  text-align: center; 
-  border-bottom: 2px dashed #000; 
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px dashed #000;
   opacity: 0.7;
   line-height: 0.1em;
-  margin: 10px 0 20px; 
+  margin: 10px 0 20px;
 }
 
 .nested-separator {
-  background: rgb(250, 238, 251); 
-  padding: 0 10px; 
+  background: rgb(250, 238, 251);
+  padding: 0 10px;
   font-weight: 600;
 }
 
@@ -148,6 +151,11 @@ a {
   transform: scale(0.9);
 }
 
+.btn-basket:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
 .shopfront {
   background: rgb(250, 238, 251);
   padding-bottom: 30px;
@@ -170,28 +178,31 @@ a {
   text-align: center;
 }
 
-
-
 /* Newsletter */
 
 .newsletter-container {
   width: 100%;
   height: 400px;
   border: 1px solid black;
-  background-image: url('http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg');
+  background-image: url("https://i.etsystatic.com/isbl/ee04b8/46759767/isbl_3360x840.46759767_l0k6nkqd.jpg?version=1");
   background-color: rgba(255, 255, 255, 1);
 }
 
-.newsletter-signup-1, .newsletter-signup-2 {
+.newsletter-signup-1,
+.newsletter-signup-2 {
   width: 30%;
   border-radius: 0 20px 20px 0;
   height: 250px;
-  background: rgb(203, 186, 237, 0.9);
+  /* background: rgb(203, 186, 237, 0.9); */
   text-align: center;
 }
 
+.newsletter-signup-2 {
+  background: rgb(203, 186, 237, 0.8);
+}
+
 .background-tint {
-  background-color: rgba(0,0,0,.5); /* Tint color */
+  background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
 }
 
@@ -199,6 +210,14 @@ a {
   width: 100%;
   border-radius: 20px 0 0 20px;
   height: 100%;
+}
+
+.newsletter-submit {
+  border: none;
+  background: #ff8ef9b3;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 200;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -222,11 +241,11 @@ a {
 
 .product-page h4 {
   font-weight: 200;
-  color: #CBBAED;
+  color: #cbbaed;
 }
 
 .product-page span {
-  color: #CBBAED;
+  color: #cbbaed;
 }
 
 /* Socials */
@@ -236,12 +255,18 @@ a {
   font-weight: 200;
 }
 
+.socials-icon {
+  font-size: 60px;
+  color: purple;
+  opacity: 0.4;
+}
+
 /* Footer */
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #CBBAED;
+  background: #cbbaed;
   font-size: 0.8em;
   font-weight: 200;
   padding: 10px;
@@ -249,15 +274,50 @@ footer {
 
 /* Loader */
 .loader {
-  border: 2px solid #ffa3e3; 
-  border-top: 2px; 
+  border: 2px solid #ffa3e3;
+  border-top: 2px;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 750ms ease-in-out infinite;
 }
 
+.payments {
+  font-size: 20px;
+  opacity: 0.5;
+  padding-left: 10px;
+}
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Cart */
+.pay-btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  size: 2em;
+}
+
+.pay-btn:hover {
+  color: white;
+}
+
+.pay-btn-container {
+  width: 100%;
+  background: rgb(100, 3, 139);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pay-btn-container:hover {
+  background-color: rgb(190, 90, 230);
 }

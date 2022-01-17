@@ -60,7 +60,7 @@ export default function ShopItem({ data, handleAddToCart }) {
           </span>
         </div>
       )}
-      <button className="btn-basket my-2" onClick={() => handleAddToCart(data)}>
+      <button className="btn-basket my-2" onClick={() => handleAddToCart(data)} disabled={data.stock === 0}>
         Add to cart
       </button>
     </div>

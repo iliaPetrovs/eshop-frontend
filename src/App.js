@@ -99,7 +99,7 @@ function App() {
         getTotalItems={getTotalItems}
         cartItems={cartItems}
       />
-      <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+      <Drawer className="drawer" anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
           <Cart
             cartItems={cartItems}
             addToCart={handleAddToCart}
@@ -127,8 +127,8 @@ function App() {
           <Success />
         </Route>
       </Switch>
-      <Newsletter />
-      <Socials />
+      {/* <Newsletter />
+      <Socials /> */}
       <Footer />
       </Elements>) : (<Loader />)}
     </Router>
