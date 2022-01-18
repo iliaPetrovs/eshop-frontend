@@ -4,9 +4,9 @@ import { Carousel } from "react-responsive-carousel";
 
 export default function ItemInfo({handleAddToCart}) {
   const {
-    state: { data },
+    state: { product },
   } = useLocation();
-  const { id, name, desc, price, category, imageUrl, stock } = data;
+  const { id, name, desc, price, category, imageUrl, stock } = product;
   const reviews = null;
   return (
     <div className="row w-75 mx-auto mt-5">

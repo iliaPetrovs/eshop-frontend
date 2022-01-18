@@ -4,7 +4,7 @@ export default function Socials() {
   return (
     <div className="socials">
       {/* <div className="w-50 mx-auto"> */}
-        <div className="text-center pt-4 pb-2">
+        <div className="text-center py-5">
           <h2>Follow us on our socials!</h2>
         </div>
         <div className="text-center w-50 mx-auto">

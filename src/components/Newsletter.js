@@ -11,8 +11,9 @@ export default function Newsletter() {
           alt="Newsletter signup"
         />
       </div>
-      <div className="newsletter-signup-2 p-4 d-flex flex-column">
+      <div className="newsletter-signup-2 p-5 d-flex flex-column justify-content-around">
         <h2 className="mb-3">Newsletter signup</h2>
+        <p>Sign up to our newsletter and receive cool stuff I guess</p>
         {/* <p>Sign up here</p> */}
         <div className="newsletter_container w-75 mx-auto mt-0">
           <input
