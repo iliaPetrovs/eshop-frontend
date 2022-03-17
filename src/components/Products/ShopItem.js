@@ -1,9 +1,6 @@
 import React from "react";
 import VanillaTilt from "vanilla-tilt";
 import { Link } from "react-router-dom";
-// import Button from "@material-ui/core/Button";
-import { Button } from "react-bootstrap";
-import { CartItemType } from "../../App";
 import StockDisplayer from "../Misc/StockDisplayer";
 
 export default function ShopItem({ product, handleAddToCart }) {

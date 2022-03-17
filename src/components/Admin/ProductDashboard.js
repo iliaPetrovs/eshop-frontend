@@ -51,7 +51,7 @@ export default function ProductDashboard() {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
+            {items && items.map((item) => (
               <tr key={item.id}>
                 <td>
                   <Image

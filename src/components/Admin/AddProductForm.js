@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 export default function AddProductForm() {
   const initialState = {
@@ -12,6 +12,10 @@ export default function AddProductForm() {
   };
 
   const [state, setState] = useState(initialState);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const categories = ["None", "Bag", "Patch", "Sticker", "Pin"];
 
@@ -34,33 +38,34 @@ export default function AddProductForm() {
   };
 
   return (
-    <div>
+    <div className="add-product-container">
       <form
-        className="border border-dark bg-dark text-white"
         onSubmit={handleOnSubmit}
+        className=""
       >
-        <div className="mb-3 p-4">
-          <label className="form-label">Name</label>
+        <div className="input-container w-100 mb-3 p-4">
           <input
-            className="form-control"
+            className="input-field"
+            placeholder="Name"
             value={state.name}
             onChange={(e) => setState({ ...state, name: e.target.value })}
             required
           ></input>
+          <label className="input-label">Name</label>
         </div>
-        <div className="mb-3 p-4">
-          <label className="form-label">Description</label>
+        <div className="input-container w-100 mb-3 p-4">
           <input
-            className="form-control"
+            className="input-field"
             value={state.description}
             onChange={(e) =>
               setState({ ...state, description: e.target.value })
             }
             required
+            placeholder="Description"
           ></input>
+          <label htmlFor="description" className="input-label">Description</label>
         </div>
         <div className="mb-3 p-4">
-          <label className="form-label">Category</label>
           <select
             id="category"
             className="custom-select"
@@ -71,38 +76,42 @@ export default function AddProductForm() {
               return <option value={category.toLowerCase()}>{category}</option>;
             })}
           </select>
+          <label className="form-label">Category</label>
         </div>
-        <div className="mb-3 p-4">
-          <label className="form-label">Image URL</label>
+        <div className="input-container w-100 mb-3 p-4">
           <input
-            className="form-control"
+            className="input-field"
             value={state.imageUrl}
             onChange={(e) => setState({ ...state, imageUrl: e.target.value })}
             required
+            placeholder="Image URL"
           ></input>
+          <label className="input-label">Image URL</label>
         </div>
-        <div className="mb-3 p-4">
-          <label className="form-label">Price</label>
+        <div className="input-container w-100 mb-3 p-4">
           <input
-            className="form-control"
+            className="input-field"
             value={state.price}
             type="number"
             onChange={(e) => setState({ ...state, price: e.target.value })}
             required
+            placeholder="Price"
           ></input>
+          <label className="input-label">Price</label>
         </div>
-        <div className="mb-3 p-4">
-          <label>Stock</label>
+        <div className="input-container w-100 mb-3 p-4">
           <input
-            className="form-control"
+            className="input-field"
             value={state.stock}
             type="number"
             onChange={(e) => setState({ ...state, stock: e.target.value })}
             required
+            placeholder="Stock"
           ></input>
+          <label className="input-label">Stock</label>
         </div>
         <div className="mb-3 p-4">
-          <button className="btn btn-primary w-100">Submit</button>
+          <button type="submit" className="pay-btn-container">Submit</button>
         </div>
       </form>
     </div>

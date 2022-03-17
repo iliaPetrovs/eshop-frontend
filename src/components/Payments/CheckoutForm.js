@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import './CheckoutForm.css'
+import "./CheckoutForm.css";
 import {
   PaymentElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
+import axios from "axios";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ cartItems }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -20,7 +21,7 @@ export default function CheckoutForm() {
     }
 
     setTimeout(() => {
-        setIsLoading(false);
+      setIsLoading(false);
     }, 1000);
 
     const clientSecret = new URLSearchParams(window.location.search).get(
@@ -58,6 +59,14 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    const prod = { products: [cartItems] };
+
+    console.log(prod);
+
+    await axios
+      .post("http://localhost:8080/pay", { products: [...cartItems] })
+      .then((res) => console.log(res.data));
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -77,7 +86,11 @@ export default function CheckoutForm() {
   return (
     <form className="my-4" id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button className="stripe-btn" disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        className="stripe-btn"
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

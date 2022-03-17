@@ -5,4 +5,11 @@ enum Category {
     PATCH = "Patch"
 }
 
-export default Category;
+enum CheckoutStage {
+    EMAIL = "Email",
+    ADDRESS = "Address",
+    PAYMENT = "Payment",
+    END = "End"
+}
+
+export default CheckoutStage;

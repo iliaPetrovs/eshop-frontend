@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Drawer from "@material-ui/core/Drawer";
@@ -13,17 +13,17 @@ import { loadStripe } from "@stripe/stripe-js";
 import AddProductForm from "./components/Admin/AddProductForm";
 import ProductDashboard from "./components/Admin/ProductDashboard";
 import Checkout from "./components/Payments/Checkout";
-import Success from "./components/Payments/Success"
+import Success from "./components/Payments/Success";
 import ItemInfo from "./components/Products/ItemInfo";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Newsletter from "./components/Newsletter";
 import Socials from "./components/Socials";
 import Footer from "./components/Footer";
-import Cart from "./components/Cart/Cart";import Loader from "./components/Misc/Loader";
+import Cart from "./components/Cart/Cart";
+import Loader from "./components/Misc/Loader";
 import CheckoutForm from "./components/Payments/CheckoutForm";
-;
-
+import StripeCheckout from "./components/Payments/StripeCheckout";
 const stripePromise = loadStripe(
   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
 );
@@ -44,7 +44,9 @@ function App() {
       .then((data) => {
         setClientSecret(data.clientSecret);
       });
-  }, [cartItems]);
+  }, []);
+
+  const CartContext = createContext(cartItems);
 
   const appearance = {
     theme: "stripe",
@@ -93,44 +95,55 @@ function App() {
   if (isLoading) return <LinearProgress />;
   return (
     <Router className="external-container">
-      {clientSecret ? (<Elements options={options} stripe={stripePromise}>
-      <Navigation
-        setCartOpen={setCartOpen}
-        getTotalItems={getTotalItems}
-        cartItems={cartItems}
-      />
-      <Drawer className="drawer" anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-          <Cart
-            cartItems={cartItems}
-            addToCart={handleAddToCart}
-            removeFromCart={handleRemoveFromCart}
-            toggleCart={toggleCart}
-          />
-      </Drawer>
-      <Switch>
-        <Route exact path="/">
-          <Home handleAddToCart={handleAddToCart} />
-        </Route>
-        <Route exact path="/product/:id">
-          <ItemInfo handleAddToCart={handleAddToCart} />
-        </Route>
-        <Route exact path="/addProduct">
-          <AddProductForm />
-        </Route>
-        <Route exact path="/dashboard">
-          <ProductDashboard />
-        </Route>
-        <Route exact path="/checkout">
-          <Checkout cartItems={cartItems} />
-        </Route>
-        <Route exact path="/success">
-          <Success />
-        </Route>
-      </Switch>
-      {/* <Newsletter />
+      {clientSecret ? (
+        <Elements options={options} stripe={stripePromise}>
+          <CartContext.Provider value={null}>
+            <Navigation
+              setCartOpen={setCartOpen}
+              getTotalItems={getTotalItems}
+              cartItems={cartItems}
+            />
+            <Drawer
+              className="drawer"
+              anchor="right"
+              open={cartOpen}
+              onClose={() => setCartOpen(false)}
+            >
+              <Cart
+                cartItems={cartItems}
+                addToCart={handleAddToCart}
+                removeFromCart={handleRemoveFromCart}
+                toggleCart={toggleCart}
+              />
+            </Drawer>
+          </CartContext.Provider>
+          <Switch>
+            <Route exact path="/">
+              <Home handleAddToCart={handleAddToCart} />
+            </Route>
+            <Route exact path="/product/:id">
+              <ItemInfo handleAddToCart={handleAddToCart} />
+            </Route>
+            <Route exact path="/addProduct">
+              <AddProductForm />
+            </Route>
+            <Route exact path="/dashboard">
+              <ProductDashboard />
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout cartItems={cartItems} clientSecret={clientSecret} />
+            </Route>
+            <Route exact path="/success">
+              <Success />
+            </Route>
+          </Switch>
+          {/* <Newsletter />
       <Socials /> */}
-      <Footer />
-      </Elements>) : (<Loader />)}
+          <Footer />
+        </Elements>
+      ) : (
+        <LinearProgress />
+      )}
     </Router>
   );
 }

@@ -1,15 +1,10 @@
 import React, { useState, useMemo } from "react";
-import Category from "../../Tools/utils.ts";
 import ShopItem from "./ShopItem";
-import jsonData from "../../api/products.json";
-import { Server } from "miragejs";
-import { Grid } from "@material-ui/core";
 import axios from "axios";
 import Loader from "../Misc/Loader";
 
 export default function Slider({ handleAddToCart }) {
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useMemo(() => {
     axios

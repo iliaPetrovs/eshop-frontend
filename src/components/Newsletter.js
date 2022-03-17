@@ -15,16 +15,16 @@ export default function Newsletter() {
         <h2 className="mb-3">Newsletter signup</h2>
         <p>Sign up to our newsletter and receive cool stuff I guess</p>
         {/* <p>Sign up here</p> */}
-        <div className="newsletter_container w-75 mx-auto mt-0">
+        <div className="input-container w-75 mx-auto mt-0">
           <input
             type="input"
-            className="newsletter_field"
+            className="input-field"
             placeholder="Email"
             name="email"
             id="email"
             required
           />
-          <label htmlFor="email" className="newsletter_label">
+          <label htmlFor="email" className="input-label">
             Email
           </label>
           <button className="newsletter-submit mt-4 p-2 w-100">Submit</button>
