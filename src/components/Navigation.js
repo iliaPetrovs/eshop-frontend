@@ -10,7 +10,7 @@ import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
 export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
   const [shouldShowBasket, setShouldShowBasket] = useState(true);
-  const [navHidden, setNavHidden] = useState(true);
+  const [showNav, setShowNav] = useState(false);
   const [navCollapse, setNavCollapse] = useState();
   const wrapperRef = useRef(null);
   const [availableCategories, setAvailableCategories] = useState([
@@ -22,58 +22,41 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
   ]);
 
   const handleClickOutsideElement = () => {
-    setNavHidden(true);
+    setShowNav(false);
   };
   useOutsideAlerter(wrapperRef, handleClickOutsideElement);
 
   const handleNav = () => {
-    setNavHidden(!navHidden);
+    setShowNav(!showNav);
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div ref={wrapperRef}>
       <div className="p-1 delivery-promo sticky-top">
         {"Free delivery over so and so amount of money hehe".toUpperCase()}
       </div>
+      <div className="hamburger-wrapper">
+          <label class="hamburger" for="check">
+            <input class="hamburger-input" type="checkbox" checked={showNav} onChange={handleNav} id="check" />
+            <span class="hamburger-1"></span>
+            <span class="hamburger-2"></span>
+            <span class="hamburger-3"></span>
+          </label>
+        </div>
       <div className="nav-container sticky-top d-flex w-100 mx-auto">
-        <button className="nav-toggle" onClick={handleNav}>
-          {navHidden ? (
-            <i class="fa-solid fa-bars"></i>
-          ) : (
-            <i class="fa-thin fa-x"></i>
-          )}
-        </button>
         <span className="fujifox">FujiFox</span>
         <nav className="primary-navigation navbar navbar-expand-lg">
-          {/* <div className="p-0">
-            <Link className="navbar-brand" to="/">
-              <span className="fujifox-home">FujiFox</span>
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div> */}
           <div
-            className={classnames("nav-wrapper", { hidden: navHidden })}
+            className={classnames("nav-wrapper", { hidden: !showNav })}
             id="navbarNavDropdown"
           >
             <ul className="navbar-nav">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">
+              <li className="nav-item">
+                <Link className="nav-link" to="/" onClick={handleNav}>
                   HOME
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item dropdown-parent">
                 <a className="nav-link" href="#">
                   SHOP{"  "}
                   <i className="fas fa-caret-down"></i>
@@ -82,24 +65,24 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
                   {availableCategories.sort().map((category, index) => {
                     return (
                       <li key={index}>
-                        <a href="#">{category}</a>
+                        <a href="#" onClick={handleNav}>{category}</a>
                       </li>
                     );
                   })}
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="about">
+                <Link className="nav-link" to="about" onClick={handleNav}>
                   ABOUT
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="addProduct">
+                <Link className="nav-link" to="addProduct" onClick={handleNav}>
                   ADD
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="dashboard">
+                <Link className="nav-link" to="dashboard" onClick={handleNav}>
                   DASHBOARD
                 </Link>
               </li>
