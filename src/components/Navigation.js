@@ -32,6 +32,7 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
 
   return (
     <div ref={wrapperRef}>
+      <div className="curve"></div>
       <div className="p-1 delivery-promo sticky-top">
         {"Free delivery over so and so amount of money hehe".toUpperCase()}
       </div>
