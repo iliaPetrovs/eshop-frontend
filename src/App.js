@@ -3,12 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Alert from "react-s-alert";
 
 import Drawer from "@material-ui/core/Drawer";
 import { LinearProgress } from "@material-ui/core";
-
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 
 import AddProductForm from "./components/Admin/AddProductForm";
 import ProductDashboard from "./components/Admin/ProductDashboard";
@@ -17,44 +15,66 @@ import Success from "./components/Payments/Success";
 import ItemInfo from "./components/Products/ItemInfo";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
-import Newsletter from "./components/Newsletter";
-import Socials from "./components/Socials";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart/Cart";
-import Loader from "./components/Misc/Loader";
-import CheckoutForm from "./components/Payments/CheckoutForm";
-import StripeCheckout from "./components/Payments/StripeCheckout";
-const stripePromise = loadStripe(
-  "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
-);
+import Login from "./components/Auth/Login";
+import RedirectHandler from "./components/Auth/RedirectHandler";
+import { useRecoilState } from "recoil";
+import { userAtom } from "./atoms/user";
+import { authenticatedAtom } from "./atoms/authenticated";
+import { getUser } from "./utils/api/user";
+import Profile from "./components/Auth/Profile";
+
+// const stripePromise = loadStripe(
+//   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
+// );
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [clientSecret, setClientSecret] = useState("");
-  const isLoading = false;
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useRecoilState(userAtom);
+  const [authenticated, setAuthenticated] = useRecoilState(authenticatedAtom);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:8080/pay", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ products: [...cartItems] }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setClientSecret(data.clientSecret);
+  //     });
+  // }, []);
+
+  const loadCurrentlyLoggedInUser = () => {
+    setIsLoading(true);
+
+    getUser()
+      .then((response) => {
+        setUser(response);
+        setAuthenticated(true);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+      });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setUser(null);
+    setAuthenticated(false);
+    Alert.success("You're safely logged out!");
+  };
 
   useEffect(() => {
-    fetch("http://localhost:8080/pay", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ products: [...cartItems] }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-      });
+    loadCurrentlyLoggedInUser();
   }, []);
 
   const CartContext = createContext(cartItems);
-
-  const appearance = {
-    theme: "stripe",
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
@@ -95,55 +115,58 @@ function App() {
   if (isLoading) return <LinearProgress />;
   return (
     <Router className="external-container">
-      {clientSecret ? (
-        <Elements options={options} stripe={stripePromise}>
-          <CartContext.Provider value={null}>
-            <Navigation
-              setCartOpen={setCartOpen}
-              getTotalItems={getTotalItems}
-              cartItems={cartItems}
-            />
-            <Drawer
-              className="drawer"
-              anchor="right"
-              open={cartOpen}
-              onClose={() => setCartOpen(false)}
-            >
-              <Cart
-                cartItems={cartItems}
-                addToCart={handleAddToCart}
-                removeFromCart={handleRemoveFromCart}
-                toggleCart={toggleCart}
-              />
-            </Drawer>
-          </CartContext.Provider>
-          <Switch>
-            <Route exact path="/">
-              <Home handleAddToCart={handleAddToCart} />
-            </Route>
-            <Route exact path="/product/:id">
-              <ItemInfo handleAddToCart={handleAddToCart} />
-            </Route>
-            <Route exact path="/addProduct">
-              <AddProductForm />
-            </Route>
-            <Route exact path="/dashboard">
-              <ProductDashboard />
-            </Route>
-            <Route exact path="/checkout">
-              <Checkout cartItems={cartItems} clientSecret={clientSecret} />
-            </Route>
-            <Route exact path="/success">
-              <Success />
-            </Route>
-          </Switch>
-          {/* <Newsletter />
+      <CartContext.Provider value={null}>
+        <Navigation
+          setCartOpen={setCartOpen}
+          getTotalItems={getTotalItems}
+          cartItems={cartItems}
+        />
+        <Drawer
+          className="drawer"
+          anchor="right"
+          open={cartOpen}
+          onClose={() => setCartOpen(false)}
+        >
+          <Cart
+            cartItems={cartItems}
+            addToCart={handleAddToCart}
+            removeFromCart={handleRemoveFromCart}
+            toggleCart={toggleCart}
+          />
+        </Drawer>
+      </CartContext.Provider>
+      <Switch>
+        <Route exact path="/">
+          <Home handleAddToCart={handleAddToCart} />
+        </Route>
+        <Route exact path="/product/:id">
+          <ItemInfo handleAddToCart={handleAddToCart} />
+        </Route>
+        <Route exact path="/addProduct">
+          <AddProductForm />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/oauth2/redirect">
+          <RedirectHandler />
+        </Route>
+        <Route exact path="/dashboard">
+          <ProductDashboard />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout cartItems={cartItems} clientSecret={clientSecret} />
+        </Route>
+        <Route exact path="/success">
+          <Success />
+        </Route>
+      </Switch>
+      {/* <Newsletter />
       <Socials /> */}
-          <Footer />
-        </Elements>
-      ) : (
-        <LinearProgress />
-      )}
+      <Footer />
     </Router>
   );
 }

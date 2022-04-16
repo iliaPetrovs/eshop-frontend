@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Badge, ButtonBase } from "@material-ui/core";
 import { StyledButton } from "../App.style";
 import { Button } from "react-bootstrap";
+import classnames from "classnames";
 import "./Navigation.scss";
+import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
 export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
   const [shouldShowBasket, setShouldShowBasket] = useState(true);
+  const [navHidden, setNavHidden] = useState(true);
+  const [navCollapse, setNavCollapse] = useState();
+  const wrapperRef = useRef(null);
   const [availableCategories, setAvailableCategories] = useState([
     "Bags",
     "Stickers",
@@ -16,14 +21,33 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
     "Patches",
   ]);
 
+  const handleClickOutsideElement = () => {
+    setNavHidden(true);
+  };
+  useOutsideAlerter(wrapperRef, handleClickOutsideElement);
+
+  const handleNav = () => {
+    setNavHidden(!navHidden);
+  };
+
+  useEffect(() => {}, []);
+
   return (
-    <>
+    <div ref={wrapperRef}>
       <div className="p-1 delivery-promo sticky-top">
         {"Free delivery over so and so amount of money hehe".toUpperCase()}
       </div>
-      <div className="nav-container sticky-top d-flex w-100 mx-auto py-2">
-        <nav className="primary-navigation mx-auto navbar navbar-expand-lg">
-          <div className="p-0">
+      <div className="nav-container sticky-top d-flex w-100 mx-auto">
+        <button className="nav-toggle" onClick={handleNav}>
+          {navHidden ? (
+            <i class="fa-solid fa-bars"></i>
+          ) : (
+            <i class="fa-thin fa-x"></i>
+          )}
+        </button>
+        <span className="fujifox">FujiFox</span>
+        <nav className="primary-navigation navbar navbar-expand-lg">
+          {/* <div className="p-0">
             <Link className="navbar-brand" to="/">
               <span className="fujifox-home">FujiFox</span>
             </Link>
@@ -38,8 +62,11 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-          </div>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          </div> */}
+          <div
+            className={classnames("nav-wrapper", { hidden: navHidden })}
+            id="navbarNavDropdown"
+          >
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <Link className="nav-link" to="/">
@@ -78,19 +105,22 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
               </li>
             </ul>
           </div>
-          {shouldShowBasket && (
-            <button
-              className="shopping-basket p-2"
-              onClick={() => setCartOpen(true)}
-            >
-              <Badge className="px-2" badgeContent={getTotalItems(cartItems)} color="error">
-                <i style={{fontSize: '1.5rem'}} class="fas fa-shopping-basket basket-icon"></i>
-              </Badge>
-            </button>
-          )}
         </nav>
-
+        {shouldShowBasket && (
+          <button
+            className="shopping-basket p-2"
+            onClick={() => setCartOpen(true)}
+          >
+            <Badge
+              className="px-2"
+              badgeContent={getTotalItems(cartItems)}
+              color="error"
+            >
+              <i class="fas fa-shopping-basket basket-icon"></i>
+            </Badge>
+          </button>
+        )}
       </div>
-    </>
+    </div>
   );
 }

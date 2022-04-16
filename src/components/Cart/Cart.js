@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem";
-import StripeContainer from "../Payments/StripeContainer";
 import { Link } from "react-router-dom";
-import CheckoutForm from "../Payments/CheckoutForm";
-import { useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 import Loader from "../Misc/Loader";
 
 export default function Cart({
