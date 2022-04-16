@@ -1,7 +1,9 @@
-$primary: rgb(107, 5, 155);
-$secondary: rgb(213, 177, 218);;
-$white: #fff;
-$gray: black;
+$purple: #cbbaed;
+$purple-dark: #978ab3;
+$pink: rgb(250, 238, 251);
+$pink-hot: #ffa3e3;
+$white: rgb(243, 243, 243);
+$black: rgb(44, 44, 44);
 
 .input-container {
   position: relative;
@@ -14,10 +16,10 @@ $gray: black;
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid $pink;
   outline: 0;
   font-size: 1.3rem;
-  color: $primary;
+  color: $black;
   padding: 12px 0px;
   background: transparent;
   transition: border-color 0.2s;
@@ -39,7 +41,7 @@ $gray: black;
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: $primary;
+  color: $purple-dark;
 }
 
 .input-field:focus {
@@ -49,13 +51,13 @@ $gray: black;
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: $primary;
+    color: $black;
     font-weight:700;    
   }
   padding-bottom: 6px;  
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image: linear-gradient(to right, $pink-hot,$pink);
   border-image-slice: 1;
 }
 /* reset input */
