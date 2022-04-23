@@ -145,7 +145,7 @@
   color: var(--black);
   transition: 200ms ease-in-out;
   text-transform: uppercase;
-  box-shadow: 0 1rem 2rem hsl(0 0% 0% / 20%);
+  box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
 }
 
 .btn-basket:hover {
@@ -216,23 +216,111 @@
 
 /* Newsletter */
 .newsletter-container {
-  width: 100%;
+  position: relative;
+  width: 100vw;
   height: 600px;
-  border: 1px solid var(--black);
   background-image: url("https://i.etsystatic.com/isbl/ee04b8/46759767/isbl_3360x840.46759767_l0k6nkqd.jpg?version=1");
-  background-color: var(--white);
+  background-size: cover;
+  background-position: center;
+}
+
+.custom-shape-divider-top-1650720074 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1650720074 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 53px;
+}
+
+.custom-shape-divider-top-1650720074 .shape-fill {
+  fill: var(--white);
+}
+
+.custom-shape-divider-bottom-1650720653 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1650720653 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 53px;
+}
+
+.custom-shape-divider-bottom-1650720653 .shape-fill {
+  fill: var(--white);
 }
 
 .newsletter-signup-1,
 .newsletter-signup-2 {
-  width: 30%;
-  border-radius: 0 20px 20px 0;
-  height: 400px;
+  width: 20%;
+  height: 300px;
   text-align: center;
 }
 
 .newsletter-signup-2 {
-  background: var(--purple);
+  background: var(--pink-hot);
+  color: var(--black);
+  border-radius: 0 20px 20px 0;
+}
+
+.newsletter-signup-2 h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.newsletter-signup-2 h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.newsletter-signup-2 p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.sign-up-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  width: 300px;
+}
+
+.newsletter-input {
+  width: 300px;
+  border: none;
+  padding: 8px 16px;
+}
+
+.newsletter-content {
+  height: 100%;
+}
+
+.sign-up-btn:hover {
+  opacity: 0.5;
+}
+
+.newsletter-signup-1 {
+  background: url("https://i.etsystatic.com/22179317/r/il/2a8ad1/2961017620/il_794xN.2961017620_n4w4.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px 0 0 20px;
 }
 
 .background-tint {
@@ -241,9 +329,10 @@
 }
 
 .newsletter-image {
-  width: 100%;
+  /* width: 100%; */
   border-radius: 20px 0 0 20px;
   height: 100%;
+  background-size: cover;
 }
 
 .newsletter-submit {
@@ -260,13 +349,13 @@
   color: var(--white);
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1750px) {
   .newsletter-signup-1 {
     display: none;
   }
   .newsletter-signup-2 {
     border-radius: 20px;
-    width: 90%;
+    width: 370px;
   }
 }
 
