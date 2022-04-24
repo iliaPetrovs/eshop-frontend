@@ -17,7 +17,7 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
     "Bags",
     "Stickers",
     "Pins",
-    "Badges",
+    "Clothes",
     "Patches",
   ]);
 
@@ -66,7 +66,7 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
                   {availableCategories.sort().map((category, index) => {
                     return (
                       <li key={index}>
-                        <a href="#" onClick={handleNav}>{category}</a>
+                        <Link to={`/shop/${category.toLowerCase()}`} onClick={handleNav}>{category}</Link>
                       </li>
                     );
                   })}

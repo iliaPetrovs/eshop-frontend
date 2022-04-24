@@ -24,6 +24,11 @@ import { userAtom } from "./atoms/user";
 import { authenticatedAtom } from "./atoms/authenticated";
 import { getUser } from "./utils/api/user";
 import Profile from "./components/Auth/Profile";
+import Clothes from "./components/Categories/Clothes";
+import Bags from "./components/Categories/Bags";
+import Pins from "./components/Categories/Pins";
+import Stickers from "./components/Categories/Stickers";
+import Patches from "./components/Categories/Patches";
 
 // const stripePromise = loadStripe(
 //   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
@@ -156,6 +161,21 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/shop/patches">
+          <Patches />
+        </Route>
+        <Route exact path="/shop/stickers">
+          <Stickers />
+        </Route>
+        <Route exact path="/shop/pins">
+          <Pins />
+        </Route>
+        <Route exact path="/shop/bags">
+          <Bags />
+        </Route>
+        <Route exact path="/shop/clothes">
+          <Clothes />
         </Route>
         <Route exact path="/checkout">
           <Checkout cartItems={cartItems} clientSecret={clientSecret} />

@@ -24,13 +24,13 @@ export default function Slider({ handleAddToCart }) {
     <div className="shopfront">
       <div className="shop-header p-4 w-75 mx-auto">
         <h2 className="separator">
-          <span className="nested-separator">NEW IN</span>
+          <span className="nested-separator">SHOP ALL</span>
         </h2>
       </div>
       {items.length === 0 ? (
         <Loader />
       ) : (
-        <div className="slider-container w-75 mx-auto">
+        <div className="slider-container mx-auto">
           {items?.map((item) => {
             return (
               <ShopItem

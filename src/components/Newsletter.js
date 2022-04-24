@@ -22,7 +22,7 @@ export default function Newsletter() {
       <div className="newsletter-signup-2">
         <div className="newsletter-content d-flex flex-column justify-content-center align-items-center">
           <h2 className="mb-2">Newsletter signup</h2>
-          <p className="">Get 10% voucher when you sign up!</p>
+          <p className="">Get 10% off your order when you sign up!</p>
           {/* <div className="input-container w-75 mx-auto mt-0">
           <input
             type="input"

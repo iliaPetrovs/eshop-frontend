@@ -18,15 +18,15 @@ export default function ShopItem({ product, handleAddToCart }) {
   }, []);
 
   return (
-    <div className="d-inline-flex flex-column align-items-center product-box mx-auto">
+    <div className="d-inline-flex flex-column align-items-center product-box mx-auto mb-5">
       <div className="product-image">
-      <Link to={{ pathname: `product/${product.id}`, state: { product } }}>
-        <img
-          ref={tiltRef}
-          className="shop-item-image"
-          src={product.imageUrl}
-          alt={product.description}
-        ></img>
+        <Link to={{ pathname: `product/${product.id}`, state: { product } }}>
+          <img
+            ref={tiltRef}
+            className="shop-item-image"
+            src={product.imageUrl}
+            alt={product.description}
+          ></img>
         </Link>
         <div className="product-overlay d-flex flex-column">
           <div className="my-auto p-1 category-display">

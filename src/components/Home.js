@@ -1,5 +1,6 @@
 import React, { useLayoutEffect } from "react";
 import CarouselLoader from "./CarouselLoader";
+import CategoryShowcase from "./CategoryShowcase";
 import Footer from "./Footer";
 import Newsletter from "./Newsletter";
 import Slider from "./Products/Slider";
@@ -13,6 +14,7 @@ export default function Home({ handleAddToCart }) {
   return (
     <div>
       <CarouselLoader />
+      <CategoryShowcase />
       <Slider handleAddToCart={handleAddToCart} />
       <Newsletter />
       <Socials />
