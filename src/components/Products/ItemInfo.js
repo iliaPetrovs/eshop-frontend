@@ -3,15 +3,18 @@ import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "../Misc/Loader";
+import { toCurrency } from "../../utils/currency";
+import { Checkbox } from "@material-ui/core";
 
 export default function ItemInfo({ handleAddToCart }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     useLayoutEffect(() => {
-      window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
-    
+
     useEffect(() => {
         axios
             .get(`http://localhost:8080/products/${id}`)
@@ -22,15 +25,27 @@ export default function ItemInfo({ handleAddToCart }) {
             .catch((error) => console.log(error));
     }, []);
 
+    const handleDecrease = () => {
+        if (quantity === 1) return;
+        setQuantity(quantity - 1);
+    };
+
+    const handleQuantity = (event) => {
+      const number = event.target.value;
+      if (number < 1) return;
+      setQuantity(number);
+  };
+
     // const { name, desc, price, category, imageUrl, stock } = product;
     const reviews = null;
     return (
         <div className="item-info-wrapper">
             {product ? (
-                <div className="row w-75 mx-auto mt-5">
-                    <div className="col p-0">
-                        <div className="item-page-carousel p-0 carousel-shop">
-                            <Carousel
+                <div className="product-info-container mx-auto mt-5">
+                    <div>
+                        <div className="hero-wrapper">
+                            {/* <div className="item-page-carousel p-0 carousel-shop"> */}
+                            {/* <Carousel
                                 infiniteLoop={true}
                                 showStatus={false}
                                 showIndicators={false}
@@ -42,30 +57,50 @@ export default function ItemInfo({ handleAddToCart }) {
                                         src={product.imageUrl}
                                     />
                                 </div>
-                            </Carousel>
+                            </Carousel> */}
+                            <img
+                                className="hero-product-image"
+                                alt={product.description}
+                                src={product.imageUrl}
+                            />
                         </div>
                     </div>
-                    <div className="col">
+                    <div className="product-page-wrapper">
                         <div className="product-page text-center">
                             <h2>{product.name}</h2>
-                            <h4>{product.price}</h4>
-                            <p>{product.description}</p>
+                            <h4>{toCurrency(product.price)}</h4>
                             {product.stock > 0 && <span>In stock</span>}
                         </div>
-                        <div className="d-flex w-50 mx-auto mt-4 justify-content-around">
-                            <h4 className="my-auto" style={{ size: "1.2em" }}>
-                                +1-
-                            </h4>
+                        <div className="product-basket">
+                            {/*TODO: Add quantity adjuster */}
+                            <div class="quantity-box">
+                                <button class="decr" onClick={handleDecrease}>
+                                    <span class="button-inner">-</span>
+                                </button>
+                                <input
+                                    type="number"
+                                    value={quantity}
+                                    onChange={handleQuantity}
+                                    onFocus={(e) => e.target.select()}
+                                    min="1"
+                                    max="99"
+                                />
+                                <button
+                                    class="incr"
+                                    onClick={() => setQuantity(quantity + 1)}
+                                >
+                                    <span class="button-inner">+</span>
+                                </button>
+                            </div>
                             <button
-                                style={{
-                                    background: "lavender",
-                                    color: "black",
-                                }}
-                                className="btn btn-secondary"
+                                className="btn-basket-info my-2"
                                 onClick={handleAddToCart}
                             >
                                 ADD TO BASKET
                             </button>
+                        </div>
+                        <div className="product-description">
+                            <p>{product.description}</p>
                         </div>
                     </div>
                     <div style={{ height: "300px" }} className="row">
