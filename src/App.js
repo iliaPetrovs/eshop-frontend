@@ -7,6 +7,7 @@ import Alert from "react-s-alert";
 
 import Drawer from "@material-ui/core/Drawer";
 import { LinearProgress } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import AddProductForm from "./components/Admin/AddProductForm";
 import ProductDashboard from "./components/Admin/ProductDashboard";
@@ -118,6 +119,14 @@ function App() {
     );
   };
 
+  const useStyles = makeStyles({
+    paper: {
+      background: "rgb(250, 238, 251)"
+    }
+  });
+
+  const classes = useStyles();
+
   if (isLoading) return <LinearProgress />;
   return (
     <Router className="external-container">
@@ -129,6 +138,7 @@ function App() {
         />
         <Drawer
           className="drawer"
+          classes={{ paper: classes.paper }}
           anchor="right"
           open={cartOpen}
           onClose={() => setCartOpen(false)}

@@ -44,7 +44,7 @@ export default function Cart({
   };
 
   return (
-    <div className="p-4">
+    <div className="cart-wrapper p-4">
       <h2 className="my-2">Your Shopping Cart</h2>
       {cartItems.length === 0 ? <p>No items in cart.</p> : null}
       {cartItems.map((item) => (

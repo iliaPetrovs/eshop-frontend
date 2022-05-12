@@ -653,6 +653,13 @@ footer {
 }
 
 /* Cart */
+.cart-wrapper {
+}
+
+.basket-product-information {
+  
+}
+
 .pay-btn {
     text-decoration: none;
     text-transform: uppercase;
