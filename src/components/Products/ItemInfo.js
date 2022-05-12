@@ -4,7 +4,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "../Misc/Loader";
 import { toCurrency } from "../../utils/currency";
-import { Checkbox } from "@material-ui/core";
 
 export default function ItemInfo({ handleAddToCart }) {
     const { id } = useParams();
@@ -31,12 +30,17 @@ export default function ItemInfo({ handleAddToCart }) {
     };
 
     const handleQuantity = (event) => {
-      const number = event.target.value;
-      if (number < 1) return;
-      setQuantity(number);
-  };
+        const number = event.target.value;
+        if (number < 1) return;
+        setQuantity(number);
+    };
 
-    // const { name, desc, price, category, imageUrl, stock } = product;
+    const onAddToCart = () => {
+        const productToAdd = { ...product, amountPending: quantity };
+        console.log(productToAdd)
+        handleAddToCart(productToAdd);
+    };
+
     const reviews = null;
     return (
         <div className="item-info-wrapper">
@@ -94,7 +98,7 @@ export default function ItemInfo({ handleAddToCart }) {
                             </div>
                             <button
                                 className="btn-basket-info my-2"
-                                onClick={handleAddToCart}
+                                onClick={onAddToCart}
                             >
                                 ADD TO BASKET
                             </button>

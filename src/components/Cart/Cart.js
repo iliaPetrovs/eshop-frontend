@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import Loader from "../Misc/Loader";
+import { toCurrency } from "../../utils/currency";
 
 export default function Cart({
   cartItems,
@@ -55,14 +56,11 @@ export default function Cart({
         />
       ))}
       <h2 className="my-4">
-        Total:{" "}
+        Total:{"  "}
         {isLoading ? (
           <Loader />
         ) : (
-          new Intl.NumberFormat("en-GB", {
-            style: "currency",
-            currency: "GBP",
-          }).format(calculateTotal(cartItems).toFixed(2))
+          toCurrency(calculateTotal(cartItems))
         )}
       </h2>
       <Link className="pay-btn" to="/checkout" onClick={handleCheckout}>

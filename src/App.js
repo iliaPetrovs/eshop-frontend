@@ -92,15 +92,16 @@ function App() {
   const handleAddToCart = (clickedItem) => {
     setCartItems((prev) => {
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
-
+      
       if (isItemInCart) {
+        const amountToAdjust = clickedItem.amountPending ? clickedItem.amountPending : 1;
         return prev.map((item) =>
           item.id === clickedItem.id
-            ? { ...item, amount: item.amount + 1 }
+            ? { ...item, amount: item.amount +  amountToAdjust}
             : item
         );
       }
-      return [...prev, { ...clickedItem, amount: 1 }];
+      return [...prev, { ...clickedItem, amount: clickedItem.amountPending ? clickedItem.amountPending : 1 }];
     });
   };
 
