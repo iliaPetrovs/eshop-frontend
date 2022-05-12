@@ -20,7 +20,7 @@ export default function ShopItem({ product, handleAddToCart }) {
   return (
     <div className="d-inline-flex flex-column align-items-center product-box mx-auto mb-5">
       <div className="product-image">
-        <Link to={{ pathname: `product/${product.id}`, state: { product } }}>
+        <Link to={{ pathname: `/product/${product.id}`, state: { product } }}>
           <img
             ref={tiltRef}
             className="shop-item-image"
@@ -37,7 +37,7 @@ export default function ShopItem({ product, handleAddToCart }) {
       </div>
 
       <div className="mt-2">
-        <Link to={{ pathname: `product/${product.id}`, state: { product } }}>
+        <Link to={{ pathname: `/product/${product.id}`, state: { product } }}>
           {product.name}
         </Link>
       </div>

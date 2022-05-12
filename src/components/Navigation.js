@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 import classnames from "classnames";
 import "./Navigation.scss";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
   const [shouldShowBasket, setShouldShowBasket] = useState(true);
@@ -31,19 +32,25 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
   };
 
   return (
-    <div ref={wrapperRef}>
+    <div className="navigation" ref={wrapperRef}>
       <div className="curve"></div>
-      <div className="p-1 delivery-promo sticky-top">
+      <div className="p-1 delivery-promo">
         {"Free delivery over so and so amount of money hehe".toUpperCase()}
       </div>
       <div className="hamburger-wrapper">
-          <label class="hamburger" for="check">
-            <input class="hamburger-input" type="checkbox" checked={showNav} onChange={handleNav} id="check" />
-            <span class="hamburger-1"></span>
-            <span class="hamburger-2"></span>
-            <span class="hamburger-3"></span>
-          </label>
-        </div>
+        <label class="hamburger" for="check">
+          <input
+            class="hamburger-input"
+            type="checkbox"
+            checked={showNav}
+            onChange={handleNav}
+            id="check"
+          />
+          <span class="hamburger-1"></span>
+          <span class="hamburger-2"></span>
+          <span class="hamburger-3"></span>
+        </label>
+      </div>
       <div className="nav-container sticky-top d-flex w-100 mx-auto">
         <span className="fujifox">FujiFox</span>
         <nav className="primary-navigation navbar navbar-expand-lg">
@@ -66,24 +73,29 @@ export default function Navigation({ setCartOpen, getTotalItems, cartItems }) {
                   {availableCategories.sort().map((category, index) => {
                     return (
                       <li key={index}>
-                        <Link to={`/shop/${category.toLowerCase()}`} onClick={handleNav}>{category}</Link>
+                        <Link
+                          to={`/shop/${category.toLowerCase()}`}
+                          onClick={handleNav}
+                        >
+                          {category}
+                        </Link>
                       </li>
                     );
                   })}
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="about" onClick={handleNav}>
+                <Link className="nav-link" to="/about" onClick={handleNav}>
                   ABOUT
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="addProduct" onClick={handleNav}>
+                <Link className="nav-link" to="/addProduct" onClick={handleNav}>
                   ADD
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="dashboard" onClick={handleNav}>
+                <Link className="nav-link" to="/dashboard" onClick={handleNav}>
                   DASHBOARD
                 </Link>
               </li>
