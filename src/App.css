@@ -10,6 +10,12 @@
     --pink-hot: #ffa3e3;
     --white: rgb(243, 243, 243);
     --black: rgb(44, 44, 44);
+    --x-small: 12px;
+    --small: 16px;
+    --medium: 24px;
+    --large: 36px;
+    --x-large: 52px;
+
 }
 
 /* Carousel */
@@ -652,12 +658,105 @@ footer {
     }
 }
 
+/* Add Product Form */
+.add-product-container {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 120px;
+  border-radius: 4%;
+  box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
+  background: var(--pink);
+}
+
+.add-form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-form {
+  width: 75%;
+}
+
+.add-product-header {
+  padding-top: var(--medium);
+  padding-bottom: var(--medium);
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--large);
+  opacity: 0.7;
+}
+
+.add-input-field, .custom-select {
+  margin: 0 auto;
+  width: 100%;
+  border: 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--x-small);
+  padding: var(--x-small);
+  border-radius: 10px;
+}
+
+.add-input-field:focus, .custom-select:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Alert */
+.alert-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+.alert-container {
+  max-width: 500px;
+  display: inline-block;
+  color: var(--black);
+  font-weight: 200;
+  font-size: var(--medium);
+  cursor: pointer;
+  color: rgb(67, 129, 77);
+  position: relative;
+}
+
+.alert-box {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--medium) var(--x-large);
+  background: rgb(170, 255, 184);
+  border-radius: 10px;
+  /* position: relative; */
+}
+
+.alert-content {
+  margin-left: 20px;
+}
+
+.info-circle-container {
+  position: absolute;
+  left: 0;
+  padding: 0 var(--x-small) 0 var(--medium);
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  background: rgb(140, 255, 159);
+}
+
+.info-circle {
+  position: absolute;
+  left: 5px;
+}
+
 /* Cart */
 .cart-wrapper {
 }
 
 .basket-product-information {
-  
+
 }
 
 .pay-btn {
@@ -673,16 +772,20 @@ footer {
 
 .pay-btn-container {
     width: 100%;
-    background: var(--purple);
+    background: var(--purple-dark);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     color: var(--white);
+    text-transform: uppercase;
+    border: 0;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .pay-btn-container:hover {
-    background-color: var(--pink-hot);
+    background-color: var(--purple);
 }
 
 /* Checkout */
@@ -695,11 +798,6 @@ footer {
 }
 
 /* Admin */
-.add-product-container {
-    background: var(--pink);
-    margin-bottom: 20px;
-}
-
 .nav-container {
     width: 50vw;
     font-size: 2rem;
