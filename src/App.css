@@ -429,29 +429,29 @@
     background: #eee;
 }
 
-/* Table */ 
+/* Table */
 table {
-  width: 90%;
-  margin: 0 auto;
+    width: 90%;
+    margin: 0 auto;
 }
 
 th {
-  border-bottom: 1px solid var(--black) !important;
-  text-align: right !important;
+    border-bottom: 1px solid var(--black) !important;
+    text-align: right !important;
 }
 
 td {
-  padding: var(--small) 0 !important;
-  border-bottom: 1px solid rgb(205, 205, 205) !important;
-  text-align: right !important;
+    padding: var(--small) 0 !important;
+    border-bottom: 1px solid rgb(205, 205, 205) !important;
+    text-align: right !important;
 }
 
 .thumbnail {
-  width: 20px !important;
+    width: 20px !important;
 }
 
 .toggle-category {
-  display: none;
+    display: none;
 }
 
 /* Newsletter */
@@ -690,6 +690,7 @@ footer {
     border-radius: 4%;
     box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
     background: var(--pink);
+    position: relative;
 }
 
 .add-form-container {
@@ -731,7 +732,7 @@ footer {
 
 /* Edit Product Form */
 .inline-edit-container {
-  width: 100%;
+    width: 100%;
 }
 
 /* Alert */
@@ -795,11 +796,11 @@ footer {
 }
 
 .admin-container {
-  width: 75%;
-  background: var(--pink);
-  border-radius: 10px;
-  box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
-  margin: 0 auto;
+    width: 75%;
+    background: var(--pink);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
+    margin: 0 auto;
 }
 
 .admin-dashboard-header {
@@ -811,6 +812,28 @@ footer {
     text-transform: uppercase;
     font-size: var(--large);
     opacity: 0.7;
+}
+
+/* Modal */
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border-radius: 10%;
+    background: var(--purple-dark);
+    border: none;
+    padding: 6px 12px;
+}
+
+.close-modal i {
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    color: var(--white);
+}
+
+.edit-product-image {
+    display: none;
 }
 
 /* Cart */
@@ -1188,6 +1211,24 @@ footer {
     }
 
     .toggle-category {
-      display: table-cell;
+        display: table-cell;
+    }
+
+    .edit-product-image {
+        display: block;
+        height: 75%;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        margin-right: 16px;
+    }
+
+    .edit-product-image img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .add-form {
+        width: 95%;
     }
 }
