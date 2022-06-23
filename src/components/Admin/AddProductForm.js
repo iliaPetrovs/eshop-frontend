@@ -1,4 +1,5 @@
 import axios from "axios";
+import classNames from "classnames";
 import React, { useLayoutEffect, useState } from "react";
 
 export default function AddProductForm() {
@@ -10,8 +11,8 @@ export default function AddProductForm() {
         imageUrl: "",
         stock: "",
     };
-
     const [state, setState] = useState(initialState);
+    const [showAlert, setShowAlert] = useState(false);
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -32,15 +33,23 @@ export default function AddProductForm() {
 
         axios
             .post("http://localhost:8080/products", bodyFormData)
-            .then(() => alert("SUCCESS"))
             .then(() => {
                 setState(initialState);
+                displayAlert();
             })
             .catch((e) => console.log(e));
     };
 
+    const displayAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 4000);
+    };
+
     return (
         <>
+            <div style={{ paddingTop: "140px" }}></div>
             <div className="add-product-container">
                 <h2 className="add-product-header">Add Product</h2>
                 <div className="add-form-container">
@@ -119,7 +128,11 @@ export default function AddProductForm() {
                     </form>
                 </div>
             </div>
-            <div className="alert-wrapper">
+            <div
+                className={classNames("alert-wrapper", {
+                    "alert-hidden": !showAlert,
+                })}
+            >
                 <div className="alert-container">
                     <div className="alert-box">
                         <span className="info-circle-container"></span>

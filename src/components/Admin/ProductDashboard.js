@@ -1,95 +1,155 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 import {} from "@material-ui/core";
-import {
-  Card,
-  Table,
-  Image,
-  ButtonGroup,
-  Button,
-} from "react-bootstrap";
+import { Card, Table, Image, ButtonGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { toCurrency } from "../../utils/currency";
+import EditProductForm from "./EditProductForm";
 
 export default function ProductDashboard() {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+    const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
-  useMemo(() => {
-    axios
-      .get("http://localhost:8080/products", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-      .then((response) => {
-        setItems(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    useMemo(() => {
+        axios
+            .get("http://localhost:8080/products", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+            })
+            .then((response) => {
+                setItems(response.data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
-  const handleDelete = (itemId) => {
-    axios.delete(`http://localhost:8080/products/${itemId}`);
-    setItems(items.filter((item) => item.id !== itemId));
-  };
+    const handleDelete = (itemId) => {
+        axios.delete(`http://localhost:8080/products/${itemId}`);
+        setItems(items.filter((item) => item.id !== itemId));
+    };
 
-  return (
-    <div>
-      <Card>
-        <Card.Header>Product List</Card.Header>
-        <Table bordered hover striped variant="light">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Image URL</th>
-              <th>Stock</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items && items.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <Image
-                    src={item.imageUrl}
-                    roundedCircle
-                    width="25"
-                    height="25"
-                  />{" "}
-                  {item.title}
-                </td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>{item.price}</td>
-                <td>{item.category}</td>
-                <td>{item.imageUrl}</td>
-                <td>{item.stock}</td>
-                <td>
-                  <ButtonGroup>
-                    <Link
-                      to={"edit/" + item.id}
-                      className="btn btn-sm btn-outline-primary"
-                    >
-                      Edit
-                    </Link>
-                    <Button
-                      size="sm"
-                      variant="outline-danger"
-                      onClick={() => handleDelete(item.id)}
-                    >
-                      Bin
-                    </Button>
-                  </ButtonGroup>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Card>
-    </div>
-  );
+    return (
+        <div className="admin-dashboard-container">
+            <div style={{ paddingTop: "140px" }}></div>
+            <div className="admin-container">
+                <h1 className="admin-dashboard-header">Admin Dashboard</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="thumbnail"></th>
+                            <th>Name</th>
+                            <th className="toggle-category">Description</th>
+                            <th className="toggle-category">Price</th>
+                            <th className="toggle-category">Category</th>
+                            <th className="toggle-category">Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {items &&
+                            items.map((item) => (
+                                <>
+                                    <tr key={item.id}>
+                                        <td className="thumbnail">
+                                            <Image
+                                                src={item.imageUrl}
+                                                roundedCircle
+                                                width="25"
+                                                height="25"
+                                            />
+                                            {item.title}
+                                        </td>
+                                        <td>{item.name}</td>
+                                        <td className="toggle-category">
+                                            {item.description}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {toCurrency(item.price)}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {item.category}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {item.stock}
+                                        </td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    to={"edit/" + item.id}
+                                                    className="btn btn-sm btn-outline-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline-danger"
+                                                    onClick={() =>
+                                                        handleDelete(item.id)
+                                                    }
+                                                >
+                                                    Bin
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                    <tr key={item.id}>
+                                      <form>
+                                        <td className="thumbnail">
+                                            <Image
+                                                src={item.imageUrl}
+                                                roundedCircle
+                                                width="25"
+                                                height="25"
+                                            />
+                                            {item.title}
+                                        </td>
+                                        <td>
+                                            <input
+                                                className="add-input-field"
+                                                placeholder="Name"
+                                                required
+                                            ></input>
+                                        </td>
+                                        <td className="toggle-category">
+                                            {item.description}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {toCurrency(item.price)}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {item.category}
+                                        </td>
+                                        <td className="toggle-category">
+                                            {item.stock}
+                                        </td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    to={"edit/" + item.id}
+                                                    className="btn btn-sm btn-outline-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline-danger"
+                                                    onClick={() =>
+                                                        handleDelete(item.id)
+                                                    }
+                                                >
+                                                    Bin
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                        </form>
+                                    </tr>
+                                    {/* <EditProductForm /> */}
+                                </>
+                            ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 }
