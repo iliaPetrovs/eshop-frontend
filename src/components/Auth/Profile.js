@@ -1,18 +1,26 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../atoms/user";
+import Loader from "../Misc/Loader";
 
 export default function Profile() {
     const [user] = useRecoilState(userAtom);
-    // useEffect(() => {
-    //     console.log(user);
-    // }, [user]);
+
     return (
-        <div style={{ paddingTop: "140px" }}>
+        <div className="profile-container" style={{ paddingTop: "140px" }}>
             {user ? (
                 <div>
-                    {user.name}
-                    <img src={user.imageUrl} />
+                    <div className="profile-sidebar"></div>
+                    <div className="profile-content">
+                        <h3>{user.name}</h3>
+                        <div>
+                            {user.imageUrl ? (
+                                <img src={user.imageUrl} />
+                            ) : (
+                                <Loader />
+                            )}
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <div>Hello</div>
