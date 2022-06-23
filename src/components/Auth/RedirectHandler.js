@@ -13,7 +13,6 @@ export default function RedirectHandler() {
   };
 
   const token = getUrlParameter("token");
-  console.log(token)
 
   if (token) {
     localStorage.setItem("accessToken", token);

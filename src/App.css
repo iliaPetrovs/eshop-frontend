@@ -881,6 +881,43 @@ footer {
     height: 100vh;
 }
 
+/* Login */
+.login-container {
+    padding-top: 100px;
+}
+.login-container > div {
+    width: 50%;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
+    border-radius: 10px;
+}
+
+.login-container div h1 {
+    text-align: center;
+    color: var(--purple-dark);
+    font-weight: 300;
+}
+
+.login-box {
+    padding: 6px 12px;
+    margin: 6px 12px;
+    border: 1px solid rgb(236, 236, 236);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    color: var(--purple-dark);
+    margin-top: 32px;
+}
+
+.google-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
 /* Admin */
 .nav-container {
     width: 50vw;

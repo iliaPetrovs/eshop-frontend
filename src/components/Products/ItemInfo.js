@@ -18,7 +18,6 @@ export default function ItemInfo({ handleAddToCart }) {
         axios
             .get(`http://localhost:8080/products/${id}`)
             .then((response) => {
-                console.log(response.data.imageUrl);
                 setProduct(response.data);
             })
             .catch((error) => console.log(error));
@@ -37,7 +36,6 @@ export default function ItemInfo({ handleAddToCart }) {
 
     const onAddToCart = () => {
         const productToAdd = { ...product, amountPending: quantity };
-        console.log(productToAdd)
         handleAddToCart(productToAdd);
     };
 

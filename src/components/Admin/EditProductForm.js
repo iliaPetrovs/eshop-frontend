@@ -14,8 +14,6 @@ export default function EditProductForm({ setModalOpen, item }) {
 
     const categories = ["Choose category...", "Bag", "Patch", "Sticker", "Pin"];
 
-    console.log(item);
-
     const handleOnSubmit = (e) => {
         e.preventDefault();
 

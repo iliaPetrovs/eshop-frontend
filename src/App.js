@@ -69,11 +69,16 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    loadCurrentlyLoggedInUser();
+  }, [])
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     setUser(null);
     setAuthenticated(false);
-    Alert.success("You're safely logged out!");
+    window.alert("logged out")
+    Alert.success("logged out!");
   };
 
   useEffect(() => {
@@ -135,6 +140,7 @@ function App() {
           setCartOpen={setCartOpen}
           getTotalItems={getTotalItems}
           cartItems={cartItems}
+          handleLogout={handleLogout}
         />
         <Drawer
           className="drawer"

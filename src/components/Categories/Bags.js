@@ -18,7 +18,6 @@ export default function Bags() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setItems(response.data);
             })
             .catch((error) => console.log(error));

@@ -38,7 +38,6 @@ export default function Cart({
       .then((res) => res.json())
       .then((data) => {
         setClientSecret(data.clientSecret);
-        console.log(data)
         toggleCart();
       });
   };

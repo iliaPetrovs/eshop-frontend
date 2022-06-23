@@ -18,7 +18,6 @@ export default function Patches() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setItems(response.data);
             })
             .catch((error) => console.log(error));
