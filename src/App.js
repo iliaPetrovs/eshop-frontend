@@ -81,6 +81,17 @@ function App() {
     Alert.success("logged out!");
   };
 
+  // const getUserRoles = () => {
+  //   const token = localStorage.getItem("accessToken");
+  //   try {
+  //     if (!jsonwebtoken.verify(token)) throw "error";
+  //     const userDataFromToken = jsonwebtoken.decode(token.split('.')[1])
+  //     console.log(userDataFromToken);
+  //   } catch(e) {
+  //     console.error(e)
+  //   }
+  // }
+
   useEffect(() => {
     loadCurrentlyLoggedInUser();
   }, []);
