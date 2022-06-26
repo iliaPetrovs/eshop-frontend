@@ -111,24 +111,28 @@ export default function Navigation({
                                     ABOUT
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link
-                                    className="nav-link"
-                                    to="/addProduct"
-                                    onClick={handleNav}
-                                >
-                                    ADD
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link
-                                    className="nav-link"
-                                    to="/dashboard"
-                                    onClick={handleNav}
-                                >
-                                    DASHBOARD
-                                </Link>
-                            </li>
+                            {user?.isAdmin && (
+                                <li className="nav-item">
+                                    <Link
+                                        className="nav-link"
+                                        to="/addProduct"
+                                        onClick={handleNav}
+                                    >
+                                        ADD
+                                    </Link>
+                                </li>
+                            )}
+                            {user?.isAdmin && (
+                                <li className="nav-item">
+                                    <Link
+                                        className="nav-link"
+                                        to="/dashboard"
+                                        onClick={handleNav}
+                                    >
+                                        DASHBOARD
+                                    </Link>
+                                </li>
+                            )}
                             <li className="nav-item">
                                 {authenticated ? (
                                     <Button onClick={handleLogout}>

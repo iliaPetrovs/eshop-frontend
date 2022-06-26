@@ -12,9 +12,9 @@ export default function Profile() {
                 <div>
                     <div className="profile-sidebar"></div>
                     <div className="profile-content">
-                        <h3>{user.name}</h3>
+                        <h3>{user?.name}</h3>
                         <div>
-                            {user.imageUrl ? (
+                            {user?.imageUrl ? (
                                 <img src={user.imageUrl} />
                             ) : (
                                 <Loader />

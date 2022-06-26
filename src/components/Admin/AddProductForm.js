@@ -22,7 +22,7 @@ export default function AddProductForm() {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-
+        const accessToken = localStorage.getItem("accessToken");
         let bodyFormData = new FormData();
         bodyFormData.append("name", state.name);
         bodyFormData.append("description", state.description);
@@ -32,7 +32,11 @@ export default function AddProductForm() {
         bodyFormData.append("stock", state.stock);
 
         axios
-            .post("http://localhost:8080/products", bodyFormData)
+            .post("http://localhost:8080/products", bodyFormData, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            })
             .then(() => {
                 setState(initialState);
                 displayAlert();
