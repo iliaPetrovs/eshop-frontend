@@ -28,6 +28,10 @@ export default function InfiniteProductSlider({ handleAddToCart }) {
                 <h2 className="separator">
                     <span className="nested-separator">SHOP ALL</span>
                 </h2>
+                <div class="squiggle-holder-large">
+                        <div class="ellipse-large"></div>
+                        <div class="ellipse-large ellipse2-large"></div>
+                    </div>
             </div>
             {items.length === 0 ? (
                 <Loader />
