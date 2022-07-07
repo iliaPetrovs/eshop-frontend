@@ -3,7 +3,7 @@ import VanillaTilt from "vanilla-tilt";
 import { Link } from "react-router-dom";
 import StockDisplayer from "../Misc/StockDisplayer";
 
-export default function ShopItem({ product, handleAddToCart }) {
+export default function ShopItem({ product, handleAddToCart, addedPadding }) {
   const tiltRef = React.useRef();
 
   React.useEffect(() => {

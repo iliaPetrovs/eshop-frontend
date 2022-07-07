@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import CategoryHeader from "../Misc/CategoryHeader";
 import ShopItem from "../Products/ShopItem";
 
 export default function Stickers() {
     const [items, setItems] = useState([]);
 
     useLayoutEffect(() => {
-      window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -25,9 +26,11 @@ export default function Stickers() {
 
     return (
         <div className="category-page-wrapper">
-            <div className="category-header">
-                <h1>Shop Stickers</h1>
-            </div>
+            <CategoryHeader
+                categoryName="Stickers"
+                resultQty={items.length}
+                options={["Sort by..."]}
+            />
             {items.length > 0 ? (
                 <div className="slider-container w-75 mx-auto">
                     {items &&
@@ -41,8 +44,8 @@ export default function Stickers() {
                 </div>
             ) : (
                 <div className="no-stock-label d-flex flex-column align-items-center">
-                  <h3>Sorry, there's nothing here!</h3>
-                  <p>Come back later when we have more stock.</p>
+                    <h3>Sorry, there's nothing here!</h3>
+                    <p>Come back later when we have more stock.</p>
                 </div>
             )}
         </div>

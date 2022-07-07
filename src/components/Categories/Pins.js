@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import CategoryHeader from "../Misc/CategoryHeader";
 import ShopItem from "../Products/ShopItem";
 
 export default function Pins() {
     const [items, setItems] = useState([]);
 
     useLayoutEffect(() => {
-      window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -25,9 +26,11 @@ export default function Pins() {
 
     return (
         <div className="category-page-wrapper">
-            <div className="category-header">
-                <h1>Shop Pins</h1>
-            </div>
+            <CategoryHeader
+                categoryName="Pins"
+                resultQty={items.length}
+                options={["Sort by..."]}
+            />
             {items.length > 0 ? (
                 <div className="slider-container w-75 mx-auto">
                     {items &&

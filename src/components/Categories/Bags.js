@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import ShopItem from "../Products/ShopItem";
+import Select from "../Misc/Select";
+import CategoryHeader from "../Misc/CategoryHeader";
 
 export default function Bags() {
     const [items, setItems] = useState([]);
 
     useLayoutEffect(() => {
-      window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -25,9 +27,11 @@ export default function Bags() {
 
     return (
         <div className="category-page-wrapper">
-            <div className="category-header">
-                <h1>Shop Bags</h1>
-            </div>
+            <CategoryHeader
+                categoryName="Bags"
+                resultQty={items.length}
+                options={["Sort by..."]}
+            />
             {items.length > 0 ? (
                 <div className="slider-container w-75 mx-auto">
                     {items &&
