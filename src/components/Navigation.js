@@ -112,7 +112,7 @@ export default function Navigation({
                                 </Link>
                             </li>
                             {user?.isAdmin && (
-                                <li className="nav-item">
+                                <li className="nav-item nav-item-responsive">
                                     <Link
                                         className="nav-link"
                                         to="/addProduct"
@@ -123,7 +123,7 @@ export default function Navigation({
                                 </li>
                             )}
                             {user?.isAdmin && (
-                                <li className="nav-item">
+                                <li className="nav-item nav-item-responsive">
                                     <Link
                                         className="nav-link"
                                         to="/dashboard"
@@ -133,11 +133,14 @@ export default function Navigation({
                                     </Link>
                                 </li>
                             )}
-                            <li className="nav-item">
+                            <li className="nav-item nav-item-responsive">
                                 {authenticated ? (
-                                    <Button onClick={handleLogout}>
-                                        Logout
-                                    </Button>
+                                    <li
+                                        className="nav-link"
+                                        onClick={handleLogout}
+                                    >
+                                        LOGOUT
+                                    </li>
                                 ) : (
                                     <Link
                                         className="nav-link"
@@ -152,18 +155,59 @@ export default function Navigation({
                     </div>
                 </nav>
                 {shouldShowBasket && (
-                    <button
-                        className="shopping-basket p-2"
-                        onClick={() => setCartOpen(true)}
-                    >
-                        <Badge
-                            className="px-2"
-                            badgeContent={getTotalItems(cartItems)}
-                            color="error"
+                    <div className="right-nav-container">
+                        <div className="admin-nav-responsive">
+                            {user?.isAdmin && (
+                                <li>
+                                    <Link
+                                        className="nav-link"
+                                        to="/addProduct"
+                                        onClick={handleNav}
+                                    >
+                                        Add
+                                    </Link>
+                                </li>
+                            )}
+                            {user?.isAdmin && (
+                                <li>
+                                    <Link
+                                        className="nav-link"
+                                        to="/dashboard"
+                                        onClick={handleNav}
+                                    >
+                                        Dashboard
+                                    </Link>
+                                </li>
+                            )}
+                            <li>
+                                {authenticated ? (
+                                    <li className="nav-link" onClick={handleLogout}>
+                                        Logout
+                                    </li>
+                                ) : (
+                                    <Link
+                                        className="nav-link"
+                                        to="/login"
+                                        onClick={handleNav}
+                                    >
+                                        Login
+                                    </Link>
+                                )}
+                            </li>
+                        </div>
+                        <button
+                            className="shopping-basket p-2"
+                            onClick={() => setCartOpen(true)}
                         >
-                            <i class="fas fa-shopping-basket basket-icon"></i>
-                        </Badge>
-                    </button>
+                            <Badge
+                                className="px-2"
+                                badgeContent={getTotalItems(cartItems)}
+                                color="error"
+                            >
+                                <i class="fas fa-shopping-basket basket-icon"></i>
+                            </Badge>
+                        </button>
+                    </div>
                 )}
             </div>
         </div>

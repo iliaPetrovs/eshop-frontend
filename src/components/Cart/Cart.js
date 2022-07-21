@@ -30,16 +30,17 @@ export default function Cart({
     items.reduce((ack, item) => ack + item.amount * item.price, 0);
 
   const handleCheckout = () => {
-    fetch("http://localhost:8080/pay", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ products: [...cartItems] }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-        toggleCart();
-      });
+    // fetch("http://localhost:8080/pay", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ products: [...cartItems] }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setClientSecret(data.clientSecret);
+    //     toggleCart();
+    //   });
+    console.log('checkout')
   };
 
   return (

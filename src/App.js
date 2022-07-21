@@ -206,7 +206,7 @@ function App() {
           <Clothes />
         </Route>
         <Route exact path="/checkout">
-          <Checkout cartItems={cartItems} clientSecret={clientSecret} />
+          <Checkout cartItems={cartItems} />
         </Route>
         <Route exact path="/success">
           <Success />
