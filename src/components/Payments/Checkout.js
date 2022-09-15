@@ -18,28 +18,56 @@ export default function Checkout({ cartItems }) {
         <div className="checkout-container">
             {showCheckout ? (
                 <div>
-                    <button
-                        className="order-summary mb-5"
-                        onClick={() => setShowOrderSummary(!showOrderSummary)}
-                    >
-                        <div className="order-summary-subcontainer">
-                            <div>
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <span className="mx-2">
-                                    {showOrderSummary ? "Hide" : "Show"} order
-                                    details
-                                </span>{" "}
-                                {showOrderSummary ? (
-                                    <i class="fa-solid fa-caret-up"></i>
-                                ) : (
-                                    <i class="fa-solid fa-caret-down"></i>
-                                )}
+                    <div className="order-summary-container">
+                        <button
+                            className="order-summary"
+                            onClick={() =>
+                                setShowOrderSummary(!showOrderSummary)
+                            }
+                        >
+                            <div className="order-summary-subcontainer">
+                                <div>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span className="mx-2">
+                                        {showOrderSummary ? "Hide" : "Show"}{" "}
+                                        order details
+                                    </span>{" "}
+                                    {showOrderSummary ? (
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    ) : (
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    )}
+                                </div>
+                                <span className="order-total-checkout">
+                                    Total: {toCurrency(calculateTotal(cartItems))}
+                                </span>
                             </div>
-                            <span className="order-total-checkout">
-                                {toCurrency(calculateTotal(cartItems))}
-                            </span>
+                        </button>
+                        <div
+                            className={classNames("order-summary-details", {
+                                "order-summary-details-hidden":
+                                    !showOrderSummary,
+                            })}
+                        >
+                            {cartItems.map((item) => (
+                                <div className="order-summary-item">
+                                    <div className="order-summary-name">
+                                        <h3>{item.name} <span style={{fontWeight: '200', fontSize: '1rem'}}>x{item.amount}</span></h3>
+                                    </div>
+                                    <div>
+                                        <h4 className="order-summary-subtotal">
+                                            Subtotal:{"  "}
+                                            <span>
+                                                {toCurrency(
+                                                    calculateTotal([item])
+                                                )}
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    </button>
+                    </div>
                     <Paypal cartItems={cartItems} />
                 </div>
             ) : (

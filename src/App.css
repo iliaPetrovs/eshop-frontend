@@ -1191,15 +1191,19 @@ footer {
 }
 
 .order-summary-details {
-    height: 100px;
-    overflow: hidden;
+    height: 300px;
+    overflow: scroll;
     width: 100%;
     background: var(--primary-200);
     transition: height 0.35s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .order-summary-subcontainer {
     color: var(--primary-700);
+    display: flex;
 }
 
 .order-summary-details-hidden {
@@ -1208,6 +1212,23 @@ footer {
 
 .order-summary-details img {
     width: 50px;
+}
+
+.order-summary-item {
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--neutral-700);
+    padding: var(--x-small);
+}
+
+.order-summary-subtotal {
+    font-weight: 300;
+}
+
+.order-summary-name {
+    display: flex;
 }
 
 /* MEDIA */

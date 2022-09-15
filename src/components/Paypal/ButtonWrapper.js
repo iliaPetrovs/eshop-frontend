@@ -14,6 +14,7 @@ export const ButtonWrapper = ({ currency, showSpinner, cartItems }) => {
 
     const purchaseUnits = cartItems.map((item) => {
         return {
+            reference_id: item.name,
             description: item.name,
             amount: {
                 currency_code: currency,
