@@ -30,6 +30,7 @@ import Bags from "./components/Categories/Bags";
 import Pins from "./components/Categories/Pins";
 import Stickers from "./components/Categories/Stickers";
 import Patches from "./components/Categories/Patches";
+import About from "./components/About";
 
 // const stripePromise = loadStripe(
 //   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
@@ -147,12 +148,12 @@ function App() {
   return (
     <Router className="external-container">
       <CartContext.Provider value={null}>
-        <Navigation
+        {/* <Navigation
           setCartOpen={setCartOpen}
           getTotalItems={getTotalItems}
           cartItems={cartItems}
           handleLogout={handleLogout}
-        />
+        /> */}
         <Drawer
           className="drawer"
           classes={{ paper: classes.paper }}
@@ -177,6 +178,9 @@ function App() {
         </Route>
         <Route exact path="/addProduct">
           <AddProductForm />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/login">
           <Login />

@@ -220,7 +220,7 @@
 }
 
 .nav-container {
-    background-color: var(--secondary-100);
+    background-color: var(--neutral-900);
     width: 100%;
     height: 80px;
 }
@@ -233,7 +233,7 @@
 
 .curve {
     position: absolute;
-    background-color: var(--secondary-100);
+    background-color: var(--neutral-900);
     z-index: 100;
     width: 100%;
     height: 120px;
@@ -869,6 +869,55 @@ footer {
     border-radius: 10px;
     box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
     margin: 0 auto;
+    float: right;
+    margin: 50px;
+}
+
+.dashboard-sidebar-container {
+    display: block;
+    width: 100%;
+    z-index: 100;
+    background: var(--neutral-800);
+    height: 170px;
+    box-shadow: 0 10px 10px hsl(0 0% 0% / 20%);
+    padding-top: 30px;
+}
+
+.dashboard-sidebar {
+    height: 60%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.dashboard-sidebar h2 {
+    text-transform: uppercase;
+    font-weight: 200;
+    color: var(--neutral-300);
+    text-align: center;
+}
+
+.dashboard-sidebar ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.dashboard-sidebar ul li {
+    text-decoration: none;
+    list-style: none;
+    height: 80px;
+    width: 120px;
+    display: flex;
+}
+
+.dashboard-sidebar ul li button {
+    margin: 0 auto;
+}
+
+.dashboard-sidebar ul li i {
+    margin: 0px 10px 10px 10px;
+    display: block;
 }
 
 .admin-dashboard-header {
@@ -1003,7 +1052,7 @@ footer {
 }
 
 .nav-wrapper {
-    background-color: var(--secondary-100);
+    background-color: var(--neutral-900);
     width: 100vw;
     padding-top: 50px;
     height: 100vh;
@@ -1014,6 +1063,7 @@ footer {
 .navigation {
     position: fixed;
     z-index: 1;
+    box-shadow: 0 20px 20px 10px hsl(0 0% 0% / 20%);
 }
 
 .hidden {
@@ -1280,7 +1330,7 @@ footer {
         max-width: 100% !important;
         padding-left: 0;
         border-radius: 0 0 5% 5%;
-        background-color: var(--secondary-100);
+        background-color: var(--neutral-900);
     }
 
     .hamburger-wrapper {
@@ -1574,5 +1624,58 @@ footer {
     .right-nav-container {
         display: flex;
         align-items: baseline;
+    }
+    .dashboard-sidebar-container {
+        position: absolute;
+        top: 50px;
+        width: 310px;
+        background: var(--neutral-800);
+        height: 100%;
+        box-shadow: 0 10px 10px hsl(0 0% 0% / 20%);
+        z-index: 0;
+    }
+    
+    .dashboard-sidebar {
+        height: 60%;
+        width: 90%;
+        /* background: var(--neutral-100); */
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    
+    .dashboard-sidebar h2 {
+        text-transform: uppercase;
+        font-weight: 200;
+        color: var(--neutral-300);
+    }
+
+    .dashboard-sidebar ul {
+        display: block;
+        padding: 0;
+        margin-top: 10px;
+    }
+    
+    .dashboard-sidebar ul li {
+        text-decoration: none;
+        list-style: none;
+        height: auto;
+        width: auto;
+        display: block;
+    }
+    
+    .dashboard-sidebar ul li button {
+        display: flex;
+        width: 100%;
+        padding: 16px 4px;
+        margin-bottom: 4px;
+    }
+
+    .dashboard-sidebar ul li button:hover {
+        background: var(--neutral-700);
+        border-left: 15px solid var(--primary-400);
+        transition: all 250ms ease-in-out;
+    }
+    .admin-container {
+        width: 65%;
     }
 }

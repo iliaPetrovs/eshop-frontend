@@ -19,7 +19,9 @@ export const ButtonWrapper = ({ currency, showSpinner, cartItems }) => {
             amount: {
                 currency_code: currency,
                 value: calculateTotal([item]),
+                
             },
+            quantity: item.amount
         };
     });
 
@@ -48,13 +50,15 @@ export const ButtonWrapper = ({ currency, showSpinner, cartItems }) => {
                         })
                         .then((orderId) => {
                             // Your code here after create the order
+                            console.log(orderId)
                             return orderId;
                         });
                 }}
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         // Your code here after capture the order
-                        history.push('/success');
+                        console.log(data);
+                        // history.push('/success');
                     });
                 }}
             />

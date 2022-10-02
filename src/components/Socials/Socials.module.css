@@ -1,0 +1,38 @@
+.socials {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
+.socials i {
+    font-size: 40px;
+    color: var(--neutral-600);
+    transition: all 250ms ease-in-out;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 32px;
+    position: absolute;
+    color: var(--neutral-100);
+}
+
+@media only screen and (min-width: 1100px) {
+    .socials {
+        width: 40%;
+    }
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 32px;
+        position: relative;
+        color: var(--neutral-100);
+    }
+}

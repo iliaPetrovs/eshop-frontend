@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Newsletter from "./Newsletter";
 import InfiniteProductSlider from "./Products/InfiniteProductSlider";
 import Slider from "./Products/Slider";
-import Socials from "./Socials";
+import Socials from "./Socials/Socials";
 
 export default function Home({ handleAddToCart }) {
   useLayoutEffect(() => {

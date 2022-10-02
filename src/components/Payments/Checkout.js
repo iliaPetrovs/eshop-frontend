@@ -5,7 +5,7 @@ import Paypal from "../Paypal/Paypal";
 
 export default function Checkout({ cartItems }) {
     const [showOrderSummary, setShowOrderSummary] = useState(false);
-    const [showCheckout, setShowCheckout] = useState(true);
+    const [showCheckout, setShowCheckout] = useState(false);
 
     const calculateTotal = (items) =>
         items.reduce((ack, item) => ack + item.amount * item.price, 0);
@@ -13,6 +13,8 @@ export default function Checkout({ cartItems }) {
     const goToPayment = () => {
         setShowCheckout(true);
     };
+
+    console.log(cartItems)
 
     return (
         <div className="checkout-container">
