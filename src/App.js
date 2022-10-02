@@ -16,7 +16,6 @@ import Success from "./components/Payments/Success";
 import ItemInfo from "./components/Products/ItemInfo";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
-import Footer from "./components/Footer";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Auth/Login";
 import RedirectHandler from "./components/Auth/RedirectHandler";
@@ -31,6 +30,7 @@ import Pins from "./components/Categories/Pins";
 import Stickers from "./components/Categories/Stickers";
 import Patches from "./components/Categories/Patches";
 import About from "./components/About";
+import Footer from "./components/Footer/Footer";
 
 // const stripePromise = loadStripe(
 //   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
@@ -143,6 +143,7 @@ function App() {
   });
 
   const classes = useStyles();
+  console.log(cartItems)
 
   if (isLoading) return <LinearProgress />;
   return (
@@ -218,7 +219,7 @@ function App() {
       </Switch>
       {/* <Newsletter />
       <Socials /> */}
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
