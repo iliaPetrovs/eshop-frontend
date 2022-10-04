@@ -6,19 +6,6 @@ import Loader from "../Misc/Loader";
 export default function Slider({ handleAddToCart }) {
   const [items, setItems] = useState([]);
 
-  useMemo(() => {
-    axios
-      .get("http://localhost:8080/products", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-      .then((response) => {
-        setItems(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <div className="shopfront">

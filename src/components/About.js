@@ -1,5 +1,5 @@
 import React from "react";
-import ShowMore from "./ShowMore/ShowMore";
+import Slider from "./Slider/Slider";
 
 export default function About() {
     return (
@@ -7,7 +7,7 @@ export default function About() {
             className="w-100 mx-auto"
             style={{ margin: "0 auto", border: "1px solid black" }}
         >
-            <ShowMore />
+            <Slider />
         </div>
     );
 }

@@ -19,7 +19,7 @@ export default function ShopItem({ product, handleAddToCart, addedPadding }) {
     }, []);
 
     return (
-        <div className="d-inline-flex flex-column align-items-center product-box mx-auto mb-5">
+        <div className="d-inline-flex flex-column align-items-center product-box mx-auto">
             <div className="product-image-container">
                 <div className="product-image">
                     {/* <Link to={{ pathname: `/product/${product.id}`, state: { product } }}> */}

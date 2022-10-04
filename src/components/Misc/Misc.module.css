@@ -26,3 +26,14 @@
     left: 18px;
     background-position: 0px -20px;
 }
+
+.header {
+    padding: 12px;
+}
+
+.header h2 {
+    text-transform: uppercase;
+    font-weight: 200;
+    color: var(--neutral-500);
+    margin-bottom: 0;
+}

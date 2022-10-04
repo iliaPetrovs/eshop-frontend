@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { useState } from "react";
+import Header from "../Misc/Header";
 import Squiggle from "../Misc/Squiggle";
 
 import styles from "./ShowMore.module.css";
@@ -24,10 +25,7 @@ export default function ShowMore({ cartItems, step, title }) {
 
     return (
         <div className={classNames("section", styles.section)}>
-            <div className={styles.header}>
-                <h2>{title}</h2>
-                <Squiggle />
-            </div>
+            <Header title={title} />
             {Array.from({ length: linesToDisplay }, (k, index) => (
                 <ShowMoreLine products={getProducts(index)} />
             ))}

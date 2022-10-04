@@ -259,7 +259,6 @@
 .product-box {
     position: relative;
     border-radius: 20px;
-    margin-bottom: 32px;
 }
 
 
@@ -1320,21 +1319,11 @@ footer {
         display: none;
     }
 
-    .product-box {
-        /* height: 450px;
-        width: 300px; */
-    }
-
     .slider-container {
         width: 75%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-
-    /* .product-image {
-        height: 300px;
-        width: 100%;
-    } */
 
     .delivery-promo {
         position: fixed;
