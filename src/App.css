@@ -59,6 +59,11 @@
     --primary-warning-900: hsla(19, 57%, 30%, 1);
 }
 
+.section {
+    width: 90%;
+    margin: 0 auto;
+}
+
 /* Carousel */
 .carousel {
     cursor: grab;
@@ -253,7 +258,7 @@
 /* Item Slider */
 .product-box {
     position: relative;
-    height: 280px;
+    height: 210px;
     width: 150px;
     border-radius: 20px;
     margin-bottom: 32px;
@@ -303,14 +308,16 @@
 }
 
 .product-image {
-    height: 150px;
-    width: 100%;
+    max-height: 350px;
+    max-width: 400px;
 }
 
 .shop-item-image {
-    border-radius: 20px 20px 0 0;
-    height: 100%;
-    width: 100%;
+    border-radius: 10px 10px 0 0;
+    /* height: 400px; */
+    height: auto;
+    min-width: 100px;
+    max-width: 17vw;
     object-fit: cover;
     /* height: 300px; */
 }
@@ -326,43 +333,6 @@
 
 .horizontal-scroll-container::-webkit-scrollbar {
     display: none;
-}
-
-.btn-basket {
-    position: absolute;
-    bottom: 0;
-    border-radius: 0 0 20px 20px;
-    height: 40px;
-    width: 100%;
-    background-color: var(--primary-400);
-    color: var(--neutral-900);
-    transition: 200ms ease-in-out;
-    text-transform: uppercase;
-    box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
-    border: none;
-}
-
-.btn-basket:hover {
-    opacity: 1;
-    transition: 200ms ease-in-out;
-    transform: scale(1.1);
-}
-
-.btn-basket:active {
-    background: var(--primary-300);
-    transform: scale(0.9);
-}
-
-.btn-basket:disabled {
-    background: var(--primary-100);
-    color: var(--neutral-500);
-    cursor: not-allowed;
-}
-
-.btn-basket:disabled:hover {
-    transform: scale(1);
-    cursor: not-allowed;
-    opacity: 0.4;
 }
 
 /* Shop Item */
@@ -1352,7 +1322,7 @@ footer {
     }
 
     .product-box {
-        height: 420px;
+        height: 390px;
         width: 300px;
     }
 
@@ -1362,10 +1332,10 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .product-image {
+    /* .product-image {
         height: 300px;
         width: 100%;
-    }
+    } */
 
     .delivery-promo {
         position: fixed;
@@ -1611,5 +1581,10 @@ footer {
     }
     .admin-container {
         width: 65%;
+    }
+
+    .section {
+        width: 75%;
+        margin: 0 auto;
     }
 }

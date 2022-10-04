@@ -1,6 +1,5 @@
 import React from "react";
-import Footer from "./Footer/Footer";
-import OrderSummary from "./OrderSummary/OrderSummary";
+import ShowMore from "./ShowMore/ShowMore";
 
 export default function About() {
     return (
@@ -8,7 +7,7 @@ export default function About() {
             className="w-100 mx-auto"
             style={{ margin: "0 auto", border: "1px solid black" }}
         >
-            <OrderSummary />
+            <ShowMore />
         </div>
     );
 }

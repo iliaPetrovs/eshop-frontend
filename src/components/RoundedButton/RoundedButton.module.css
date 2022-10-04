@@ -1,0 +1,64 @@
+.btnBasket {
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+    width: 100px;
+    /* background-color: var(--primary-600); */
+    background: linear-gradient(
+        90deg,
+        var(--primary-500) 0%,
+        var(--primary-700) 100%
+    );
+    color: var(--neutral-900);
+    transition: 200ms ease-in-out;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
+    border: none;
+    font-size: var(--x-small);
+    font-weight: 200;
+    padding: 8px 8px;
+}
+
+.btnBasket:hover {
+    /* opacity: 1;
+    transition: 200ms ease-in-out;
+    transform: scale(1.1); */
+    background: linear-gradient(
+        90deg,
+        var(--primary-400) 0%,
+        var(--primary-600) 100%
+    );
+    transition: all 200ms ease-in-out;
+}
+
+@media only screen and (min-width: 1100px) {
+    .btnBasket {
+        width: 90%;
+        padding: var(--small) 8px;
+        font-size: var(--small);
+    }
+    .btnBasket:active {
+        background: linear-gradient(
+            90deg,
+            var(--primary-300) 0%,
+            var(--primary-500) 100%
+        );
+        transform: scale(0.9);
+    }
+
+    .btnBasket:disabled {
+        background: var(--neutral-700);
+        color: var(--neutral-500);
+        cursor: not-allowed;
+    }
+
+    .btnBasket:disabled:active {
+        transform: scale(1);
+        transform: translateX(-20px);
+        transition: shake 10ms ease-in;
+    }
+
+    .btnBasket:disabled:hover {
+        background: var(--neutral-600);
+    }
+}
