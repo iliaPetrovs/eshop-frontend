@@ -5,67 +5,9 @@ import Squiggle from "../Misc/Squiggle";
 import styles from "./ShowMore.module.css";
 import ShowMoreLine from "./ShowMoreLine";
 
-export default function ShowMore({ step, title }) {
+export default function ShowMore({ cartItems, step, title }) {
     const [linesToDisplay, setLinesToDisplay] = useState(1);
-
     let showMore = true;
-    const cartItems = [
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-        {
-            id: 2,
-            name: "sdfass",
-            description: "dfas",
-            price: 2,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 2,
-            amount: 1,
-        },
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-        {
-            id: 2,
-            name: "sdfass",
-            description: "dfas",
-            price: 2,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 2,
-            amount: 1,
-        },
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-    ];
 
     const handleShowMore = () => {
         setLinesToDisplay(linesToDisplay + step);
@@ -79,7 +21,6 @@ export default function ShowMore({ step, title }) {
         }
         return cartItems.slice(startIdx, endIdx);
     };
-    console.log(cartItems);
 
     return (
         <div className={classNames("section", styles.section)}>
@@ -100,6 +41,7 @@ export default function ShowMore({ step, title }) {
 }
 
 ShowMore.defaultProps = {
+    cartItems: {},
     step: 2,
     title: "Shop"
 };
