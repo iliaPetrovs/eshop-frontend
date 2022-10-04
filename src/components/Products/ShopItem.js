@@ -20,22 +20,24 @@ export default function ShopItem({ product, handleAddToCart, addedPadding }) {
 
     return (
         <div className="d-inline-flex flex-column align-items-center product-box mx-auto mb-5">
-            <div className="product-image">
-                {/* <Link to={{ pathname: `/product/${product.id}`, state: { product } }}> */}
-                <img
-                    ref={tiltRef}
-                    className="shop-item-image"
-                    src={product.imageUrl}
-                    alt={product.description}
-                ></img>
-                {/* </Link> */}
-                <div className="product-overlay d-flex flex-column">
-                    <div className="my-auto p-1 category-display">
-                        <span>{product.category.toUpperCase()}</span>
+            <div className="product-image-container">
+                <div className="product-image">
+                    {/* <Link to={{ pathname: `/product/${product.id}`, state: { product } }}> */}
+                    <img
+                        ref={tiltRef}
+                        className="shop-item-image"
+                        src={product.imageUrl}
+                        alt={product.description}
+                    ></img>
+                    {/* </Link> */}
+                    <div className="product-overlay d-flex flex-column">
+                        <div className="my-auto p-1 category-display">
+                            <span>{product.category.toUpperCase()}</span>
+                        </div>
+                        {product.stock < 20 && (
+                            <StockDisplayer stock={product.stock} />
+                        )}
                     </div>
-                    {product.stock < 20 && (
-                        <StockDisplayer stock={product.stock} />
-                    )}
                 </div>
             </div>
 
@@ -49,7 +51,7 @@ export default function ShopItem({ product, handleAddToCart, addedPadding }) {
                     {product.name}
                 </Link>
             </div>
-            <div className="mt-1">
+            <div className="my-2">
                 <span>
                     {new Intl.NumberFormat("en-GB", {
                         style: "currency",

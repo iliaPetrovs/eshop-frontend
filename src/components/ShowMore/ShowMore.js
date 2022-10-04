@@ -1,12 +1,11 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
-import ShopItem from "../Products/ShopItem";
+import React, { useState } from "react";
+import Squiggle from "../Misc/Squiggle";
 
 import styles from "./ShowMore.module.css";
 import ShowMoreLine from "./ShowMoreLine";
 
-export default function ShowMore({ step }) {
-    const [numberToDisplay, setNumberToDisplay] = useState(4);
+export default function ShowMore({ step, title }) {
     const [linesToDisplay, setLinesToDisplay] = useState(1);
 
     let showMore = true;
@@ -68,18 +67,6 @@ export default function ShowMore({ step }) {
         },
     ];
 
-    const [productsToShow, setProductsToShow] = useState(cartItems.slice(0, 4));
-
-    // const initShowMore = () => {
-    //     let counter = 1;
-    //     const maxCounter = Math.ceil(cartItems.length / 4);
-    //     const showMore = () => {
-    //         if (!counter >= maxCounter) counter++;
-    //         return counter;
-    //     };
-    //     return showMore;
-    // };
-
     const handleShowMore = () => {
         setLinesToDisplay(linesToDisplay + step);
     };
@@ -96,6 +83,10 @@ export default function ShowMore({ step }) {
 
     return (
         <div className={classNames("section", styles.section)}>
+            <div className={styles.header}>
+                <h2>{title}</h2>
+                <Squiggle />
+            </div>
             {Array.from({ length: linesToDisplay }, (k, index) => (
                 <ShowMoreLine products={getProducts(index)} />
             ))}
@@ -110,4 +101,5 @@ export default function ShowMore({ step }) {
 
 ShowMore.defaultProps = {
     step: 2,
+    title: "Shop"
 };

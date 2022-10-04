@@ -1,0 +1,28 @@
+.squiggleHolder {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 33px;
+}
+
+.ellipse {
+    position: absolute;
+    background: radial-gradient(
+        ellipse,
+        transparent,
+        transparent 7px,
+        var(--secondary-200) 7px,
+        var(--secondary-200) 10px,
+        transparent 11px
+    );
+    background-size: 36px 40px;
+    width: 100%;
+    height: 20px;
+}
+
+.ellipse2 {
+    top: 20px;
+    left: 18px;
+    background-position: 0px -20px;
+}

@@ -1,13 +1,10 @@
 .btnBasket {
-    position: absolute;
-    bottom: 0;
     border-radius: 0 0 10px 10px;
-    width: 100px;
-    /* background-color: var(--primary-600); */
+    width: 100%;
     background: linear-gradient(
         90deg,
-        var(--primary-500) 0%,
-        var(--primary-700) 100%
+        var(--secondary-500) 0%,
+        var(--secondary-700) 100%
     );
     color: var(--neutral-900);
     transition: 200ms ease-in-out;
@@ -20,28 +17,24 @@
 }
 
 .btnBasket:hover {
-    /* opacity: 1;
-    transition: 200ms ease-in-out;
-    transform: scale(1.1); */
     background: linear-gradient(
         90deg,
-        var(--primary-400) 0%,
-        var(--primary-600) 100%
+        var(--secondary-400) 0%,
+        var(--secondary-600) 100%
     );
-    transition: all 200ms ease-in-out;
+    transition: all 50ms ease-in-out;
 }
 
 @media only screen and (min-width: 1100px) {
     .btnBasket {
-        width: 90%;
-        padding: var(--small) 8px;
+        padding: var(--x-small) 8px;
         font-size: var(--small);
     }
     .btnBasket:active {
         background: linear-gradient(
             90deg,
-            var(--primary-300) 0%,
-            var(--primary-500) 100%
+            var(--secondary-300) 0%,
+            var(--secondary-500) 100%
         );
         transform: scale(0.9);
     }
