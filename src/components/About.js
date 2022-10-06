@@ -1,5 +1,6 @@
 import React from "react";
-import Slider from "./Slider/Slider";
+import items from "../utils/mocks/items";
+import ProductPage from "./ProductPage/ProductPage";
 
 export default function About() {
     return (
@@ -7,7 +8,7 @@ export default function About() {
             className="w-100 mx-auto"
             style={{ margin: "0 auto", border: "1px solid black" }}
         >
-            <Slider />
+            <ProductPage item={items[0]} />
         </div>
     );
 }

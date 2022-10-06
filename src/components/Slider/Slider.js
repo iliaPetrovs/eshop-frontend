@@ -9,79 +9,21 @@ import {
     HorizontalScrollItem,
 } from "react-simple-horizontal-scroller";
 
-export default function Slider() {
-    const items = [
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-        {
-            id: 2,
-            name: "sdfass",
-            description: "dfas",
-            price: 2,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 2,
-            amount: 1,
-        },
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-        {
-            id: 2,
-            name: "sdfass",
-            description: "dfas",
-            price: 2,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 2,
-            amount: 1,
-        },
-        {
-            id: 3,
-            name: "sdfs",
-            description: "sdfa",
-            price: 231,
-            category: "patch",
-            imageUrl:
-                "http://localhost:3000/static/media/coyoteSticker.bf798582302213e5ff5d.webp",
-            stock: 23,
-            amount: 1,
-        },
-    ];
-
+export default function Slider({ cartItens }) {
     return (
         <div className="section">
             <Header title="Shop all" />
-            {items.length === 0 ? (
+            {cartItens.length === 0 ? (
                 <Loader />
             ) : (
                 <div className={styles.sliderContainer}>
                     <HorizontalScrollContainer>
-                        {items?.map((item, index) => {
+                        {cartItens?.map((item, index) => {
                             return (
                                 <HorizontalScrollItem
                                     key={item.id}
                                     id={index + 1}
-                                    style={{padding: '24px'}}
+                                    style={{ padding: "24px" }}
                                 >
                                     <ShopItem product={item} />
                                 </HorizontalScrollItem>

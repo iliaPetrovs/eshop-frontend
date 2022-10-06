@@ -37,3 +37,52 @@
     color: var(--neutral-500);
     margin-bottom: 0;
 }
+
+.quantityBox {
+    display: flex;
+    max-width: fit-content;
+    border-radius: 15px;
+    justify-content: center;
+    border: var(--neutral-700) 1px solid;
+    margin-bottom: 10px;
+}
+
+.quantityBox input {
+    outline: none;
+    border: none;
+    text-align: center;
+    width: 40px;
+    font-weight: 200;
+}
+
+.quantityBox input::-webkit-outer-spin-button,
+.quantityBox input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.quantityBox button {
+    font-weight: 600;
+    font-size: var(--small);
+    background: var(--neutral-800);
+    cursor: pointer;
+    border: 0;
+    padding: var(--x-small) var(--small);
+    transition: all 50ms;
+}
+
+.increase {
+    border-radius: 0 15px 15px 0;
+}
+
+.decrease {
+    border-radius: 15px 0 0 15px;
+}
+
+.quantityBox button:hover {
+    background: var(--neutral-700);
+}
+
+.quantityBox button:active {
+    transform: scale(0.8);
+}

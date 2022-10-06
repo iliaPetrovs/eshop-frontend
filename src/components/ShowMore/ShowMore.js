@@ -1,14 +1,12 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import Header from "../Misc/Header";
-import Squiggle from "../Misc/Squiggle";
 
 import styles from "./ShowMore.module.css";
 import ShowMoreLine from "./ShowMoreLine";
 
-export default function ShowMore({ cartItems, step, title }) {
+export default function ShowMore({ cartItems, step, title, showMore }) {
     const [linesToDisplay, setLinesToDisplay] = useState(1);
-    let showMore = true;
 
     const handleShowMore = () => {
         setLinesToDisplay(linesToDisplay + step);
@@ -22,6 +20,9 @@ export default function ShowMore({ cartItems, step, title }) {
         }
         return cartItems.slice(startIdx, endIdx);
     };
+
+    // Lazy load items with api call when scrolled over.
+    // Load range of IDs on show more same way.
 
     return (
         <div className={classNames("section", styles.section)}>
@@ -41,5 +42,6 @@ export default function ShowMore({ cartItems, step, title }) {
 ShowMore.defaultProps = {
     cartItems: {},
     step: 2,
-    title: "Shop"
+    title: "Shop",
+    showMore: true
 };
