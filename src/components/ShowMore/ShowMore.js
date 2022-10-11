@@ -5,7 +5,7 @@ import Header from "../Misc/Header";
 import styles from "./ShowMore.module.css";
 import ShowMoreLine from "./ShowMoreLine";
 
-export default function ShowMore({ cartItems, step, title, showMore }) {
+export default function ShowMore({ items, step, title, showMore }) {
     const [linesToDisplay, setLinesToDisplay] = useState(1);
 
     const handleShowMore = () => {
@@ -15,10 +15,10 @@ export default function ShowMore({ cartItems, step, title, showMore }) {
     const getProducts = (index) => {
         let startIdx = index * 4;
         let endIdx = startIdx + 4;
-        if (endIdx > cartItems.length) {
+        if (endIdx > items.length) {
             showMore = false;
         }
-        return cartItems.slice(startIdx, endIdx);
+        return items.slice(startIdx, endIdx);
     };
 
     // Lazy load items with api call when scrolled over.
@@ -40,7 +40,7 @@ export default function ShowMore({ cartItems, step, title, showMore }) {
 }
 
 ShowMore.defaultProps = {
-    cartItems: {},
+    items: {},
     step: 2,
     title: "Shop",
     showMore: true

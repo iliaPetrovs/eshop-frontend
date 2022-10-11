@@ -144,7 +144,6 @@ function App() {
 });
 
   const classes = useStyles();
-  console.log(cartItems)
 
   if (isLoading) return <LinearProgress />;
   return (
@@ -220,7 +219,7 @@ function App() {
       </Switch>
       {/* <Newsletter />
       <Socials /> */}
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

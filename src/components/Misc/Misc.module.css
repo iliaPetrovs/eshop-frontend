@@ -36,6 +36,7 @@
     font-weight: 200;
     color: var(--neutral-500);
     margin-bottom: 0;
+    padding-bottom: var(--small);
 }
 
 .quantityBox {
