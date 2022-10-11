@@ -138,9 +138,10 @@ function App() {
 
   const useStyles = makeStyles({
     paper: {
-      background: "rgb(250, 238, 251)"
-    }
-  });
+        background: "rgb(250, 238, 251)",
+        maxWidth: "350px",
+    },
+});
 
   const classes = useStyles();
   console.log(cartItems)

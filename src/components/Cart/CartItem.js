@@ -1,52 +1,40 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import { Wrapper } from "./CartItem.style";
 import { toCurrency } from "../../utils/currency";
+import Quantity from "../Misc/Quantity";
+import classNames from "classnames";
+
+import styles from "./Cart.module.css";
 
 export default function CartItem({ item, addToCart, removeFromCart }) {
     return (
-        <Wrapper className="d-flex justify-content-between p-4">
-            <div>
-                <h3>{item.name}</h3>
-                <div className="basket-product-information">
-                    <p>
-                        Price:{" "}
-                        {new Intl.NumberFormat("en-GB", {
-                            style: "currency",
-                            currency: "GBP",
-                        }).format(item.price)}
-                    </p>
-                    <p>Subtotal: {toCurrency(item.amount * item.price)}</p>
+        <Wrapper>
+            <div className="container">
+                <div className={classNames(styles.desc, "row")}>
+                    <div className="col-12 col-md-4">
+                        <h3 className={styles.itemName}>{item.name}</h3>
+                        <p className={styles.price}>
+                            {item.amount} X {new Intl.NumberFormat("en-GB", {
+                                style: "currency",
+                                currency: "GBP",
+                            }).format(item.price)}
+                        </p>
+                        <p className={styles.subtotal}>
+                            Subtotal: {toCurrency(item.amount * item.price)}
+                        </p>
+                    </div>
+                    <div className="col-12 col-md-8">
+                        <img
+                            className={styles.image}
+                            src={item.imageUrl}
+                            alt={item.name}
+                        />
+                    </div>
                 </div>
-                <div class="quantity-box">
-                    <button
-                        class="decr"
-                        onClick={() => removeFromCart(item.id)}
-                    >
-                        <span class="button-inner">-</span>
-                    </button>
-                    <input
-                        type="number"
-                        value={item.amount}
-                        // onChange={handleQuantity}
-                        onFocus={(e) => e.target.select()}
-                        min="1"
-                        max="99"
-                    />
-                    <button class="incr" onClick={() => addToCart(item)}>
-                        <span class="button-inner">+</span>
-                    </button>
+                <div className={classNames(styles.quantity, "row")}>
+                    <Quantity />
                 </div>
             </div>
-            <img
-                style={{
-                    maxWidth: "80px",
-                    objectFit: "cover",
-                    marginLeft: "40px",
-                }}
-                src={item.imageUrl}
-                alt={item.name}
-            />
         </Wrapper>
     );
 }
