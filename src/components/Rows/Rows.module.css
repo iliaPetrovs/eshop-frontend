@@ -41,12 +41,12 @@
 }
 
 .link::before {
-    background-color: var(--secondary-200);
+    background-color: var(--secondary-300);
     bottom: 0;
     content: "";
     height: 2px;
     left: 20%;
-    opacity: 0.8;
+    opacity: 0.3;
     position: absolute;
     transition: all 0.3s;
     width: 60%;
