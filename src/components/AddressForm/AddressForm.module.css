@@ -1,0 +1,51 @@
+.container {
+    /* background: var(--primary-100); */
+}
+
+.form {
+    padding: 32px;
+}
+
+.form h4 {
+    color: var(--primary-700);
+    font-weight: 300;
+    position: relative;
+}
+
+.form h4::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    background-color: var(--secondary-300);
+}
+
+.form > div:first-child {
+    padding-bottom: 32px;
+}
+
+.input {
+    padding: 8px;
+}
+
+.dualInput div {
+    width: 45%;
+}
+
+.dualInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    width: 98%;
+    margin: 0 auto;
+    padding-top: 24px;
+    justify-content: space-between;
+}
+
+.buttons button {
+    width: 150px;
+}
