@@ -1,15 +1,15 @@
-.row {
+.subcontainer {
     width: 75%;
     margin: 0 auto;
 }
 
-.row > div {
+.subcontainer > div {
     display: flex;
     padding: var(--small) 0;
     flex-direction: column;
 }
 
-.row div img {
+.subcontainer div img {
     max-width: 200px;
     border-radius: 10px;
 }
@@ -53,19 +53,26 @@
 }
 
 .row {
-    padding-bottom: 32px;
     text-align: center;
+}
+
+.subcontainer > div {
+    padding-bottom: 32px;
+}
+
+.subcontainer > div:last-child {
+    padding-bottom: 0;
 }
 
 
 @media only screen and (min-width: 1100px) {
-    .row {
+    .subcontainer {
         padding-bottom: 0; 
     }
 }
 
 @media only screen and (max-width: 1390px) {
-    .row {
+    .subcontainer {
         width: 100%; 
     }
 }

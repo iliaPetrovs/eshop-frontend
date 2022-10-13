@@ -7,7 +7,7 @@ import styles from "./Rows.module.css";
 export default function Rows({ rows }) {
     return (
         <div className={classNames("", styles.container)}>
-            <div className={classNames("row", styles.row)}>
+            <div className={classNames("row", styles.subcontainer)}>
                 {rows.map((row) => (
                     <div className="col-12 col-md-3">
                         <div className={styles.content}>
