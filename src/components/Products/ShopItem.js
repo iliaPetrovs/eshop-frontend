@@ -22,14 +22,14 @@ export default function ShopItem({ product, handleAddToCart, addedPadding }) {
         <div className="d-inline-flex flex-column align-items-center product-box mx-auto">
             <div className="product-image-container">
                 <div className="product-image">
-                    {/* <Link to={{ pathname: `/product/${product.id}`, state: { product } }}> */}
+                    <Link to={{ pathname: `/product/${product.id}`, state: { product } }}>
                     <img
                         ref={tiltRef}
                         className="shop-item-image"
                         src={product.imageUrl}
                         alt={product.description}
                     ></img>
-                    {/* </Link> */}
+                    </Link>
                     <div className="product-overlay d-flex flex-column">
                         <div className="my-auto p-1 category-display">
                             <span>{product.category.toUpperCase()}</span>

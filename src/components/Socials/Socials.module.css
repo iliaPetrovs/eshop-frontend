@@ -8,8 +8,12 @@
 
 .socials i {
     font-size: 40px;
-    color: var(--neutral-600);
+    color: var(--neutral-900);
     transition: all 250ms ease-in-out;
+}
+
+.socials i:hover {
+    color: var(--neutral-600);
 }
 
 .bottom {
@@ -24,7 +28,7 @@
 
 @media only screen and (min-width: 1100px) {
     .socials {
-        width: 40%;
+        width: 60%;
     }
     .bottom {
         display: flex;

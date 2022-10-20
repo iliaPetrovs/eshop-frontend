@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import { calculateTotal, toCurrency } from "../../utils/currency";
+import items from "../../utils/mocks/items";
 
 import styles from "./OrderSummary.module.css";
 
@@ -76,5 +77,6 @@ export default function OrderSummary({ cartItems, shipping }) {
 }
 
 OrderSummary.defaultProps = {
+    cartItems: items,
     shipping: 0,
 };

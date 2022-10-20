@@ -42,6 +42,7 @@ export default function Footer() {
                         <Input
                             name="email"
                             placeholder="Give us your email ;)"
+                            hideLabel={true}
                         />
                     </div>
                     <div className={styles.button}>

@@ -8,6 +8,8 @@ import Socials from "./Socials/Socials";
 import items from "../utils/mocks/items";
 import Slider from "./Slider/Slider";
 import ShowMore from "./ShowMore/ShowMore";
+import CTAImage from "./CTAImage/CTAImage";
+import Rows from "./Rows/Rows";
 
 export default function Home({ handleAddToCart }) {
     useLayoutEffect(() => {
@@ -21,13 +23,14 @@ export default function Home({ handleAddToCart }) {
         <div>
             <CarouselLoader />
             <CategoryShowcase />
-            <div className="w-75 mx-auto pt-5">
+            <div className="w-75 mx-auto">
                 <Slider items={items} />
             </div>
-
-            <div className="w-75 mx-auto pt-5">
+            <Rows />
+            <div className="w-75 mx-auto">
                 <ShowMore items={items} title="Exclusive selection" />
             </div>
+            <CTAImage title="Hello there" body="Stop reading, nothing catchy here" />
             <Newsletter />
         </div>
     );

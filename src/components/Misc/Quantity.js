@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useState } from "react";
 
 import styles from "./Misc.module.css";
@@ -33,7 +34,9 @@ export default function Quantity() {
                     className={styles.decrease}
                     onClick={() => handleDecrease()}
                 >
-                    <span>-</span>
+                    <i
+                        className={classNames("fa-solid fa-minus", styles.icon)}
+                    ></i>
                 </button>
                 <input
                     type="number"
@@ -48,7 +51,9 @@ export default function Quantity() {
                     className={styles.increase}
                     onClick={() => setVal(Number(val) + 1)}
                 >
-                    <span>+</span>
+                    <i
+                        className={classNames("fa-solid fa-plus", styles.icon)}
+                    ></i>
                 </button>
             </div>
         </>

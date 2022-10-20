@@ -11,7 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import AddProductForm from "./components/Admin/AddProductForm";
 import ProductDashboard from "./components/Admin/ProductDashboard";
-import Checkout from "./components/Payments/Checkout";
 import Success from "./components/Payments/Success";
 import ItemInfo from "./components/Products/ItemInfo";
 import Navigation from "./components/Navigation";
@@ -31,6 +30,10 @@ import Stickers from "./components/Categories/Stickers";
 import Patches from "./components/Categories/Patches";
 import About from "./components/About";
 import Footer from "./components/Footer/Footer";
+import Checkout from "./components/Checkout/Checkout";
+
+import items from "./utils/mocks/items";
+import Register from "./components/Auth/Register";
 
 // const stripePromise = loadStripe(
 //   "pk_test_51KGiaLKfoI8qdTqswkb40eRHYWUNTxm9xFwPOl3kN7aXvW4oexacMiIC5SrC1n9RT9LIju4WDnsG8YtPH7aZ88as00Vp2wMPBm"
@@ -138,7 +141,7 @@ function App() {
 
   const useStyles = makeStyles({
     paper: {
-        background: "rgb(250, 238, 251)",
+        background: "ivorywhite",
         maxWidth: "350px",
     },
 });
@@ -149,12 +152,12 @@ function App() {
   return (
     <Router className="external-container">
       <CartContext.Provider value={null}>
-        {/* <Navigation
+        <Navigation
           setCartOpen={setCartOpen}
           getTotalItems={getTotalItems}
           cartItems={cartItems}
           handleLogout={handleLogout}
-        /> */}
+        />
         <Drawer
           className="drawer"
           classes={{ paper: classes.paper }}
@@ -163,7 +166,7 @@ function App() {
           onClose={() => setCartOpen(false)}
         >
           <Cart
-            cartItems={cartItems}
+            cartItems={items}
             addToCart={handleAddToCart}
             removeFromCart={handleRemoveFromCart}
             toggleCart={toggleCart}
@@ -185,6 +188,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/register">
+          <Register />
         </Route>
         <Route exact path="/oauth2/redirect">
           <RedirectHandler />
@@ -211,7 +217,7 @@ function App() {
           <Clothes />
         </Route>
         <Route exact path="/checkout">
-          <Checkout cartItems={cartItems} />
+          <Checkout />
         </Route>
         <Route exact path="/success">
           <Success />

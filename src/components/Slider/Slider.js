@@ -10,7 +10,6 @@ import {
 } from "react-simple-horizontal-scroller";
 
 export default function Slider({ items }) {
-    console.log("length is " + JSON.stringify(items))
     return (
         <div className="section">
             <Header title="Shop all" />

@@ -66,7 +66,7 @@
 .quantityBox button {
     font-weight: 600;
     font-size: var(--small);
-    background: var(--neutral-800);
+    background: var(--primary-500);
     cursor: pointer;
     border: 0;
     padding: var(--x-small) var(--small);
@@ -83,9 +83,13 @@
 }
 
 .quantityBox button:hover {
-    background: var(--neutral-700);
+    background: var(--primary-400);
 }
 
 .quantityBox button:active {
     transform: scale(0.8);
+}
+
+.icon {
+    color: var(--neutral-800);
 }
