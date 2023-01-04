@@ -24,8 +24,19 @@
     font-size: var(--medium);
 }
 
+.showMore button:hover {
+    color: var(--secondary-700);
+}
+
 @media only screen and (max-width: 525px) {
     .productContainer {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1800px) {
+    .productContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
     }
 }

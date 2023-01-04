@@ -3,12 +3,11 @@ import React, { useState } from "react";
 
 import styles from "./Misc.module.css";
 
-export default function Quantity() {
+export default function Quantity({value, onIncrease, onDecrease}) {
     const [val, setVal] = useState(1);
 
     const handleQuantity = (event) => {
         const number = event.target.value;
-        console.log(number);
         if (val < 1 || isNaN(val)) {
             setVal(0);
         }
@@ -18,21 +17,13 @@ export default function Quantity() {
     const handleOnChange = (event) => {
         setVal(event.target.value);
     };
-
-    const handleDecrease = () => {
-        if (val <= 1) {
-            setVal(0);
-            return;
-        }
-        setVal(val - 1);
-    };
-
     return (
         <>
             <div className={styles.quantityBox}>
                 <button
                     className={styles.decrease}
-                    onClick={() => handleDecrease()}
+                    onClick={() => onDecrease()}
+                    disabled={value < 1}
                 >
                     <i
                         className={classNames("fa-solid fa-minus", styles.icon)}
@@ -40,16 +31,18 @@ export default function Quantity() {
                 </button>
                 <input
                     type="number"
-                    value={val}
+                    value={value}
                     onChange={handleOnChange}
                     onFocus={(e) => e.target.select()}
                     onBlur={handleQuantity}
                     min="1"
                     max="99"
+                    disabled
                 />
                 <button
                     className={styles.increase}
-                    onClick={() => setVal(Number(val) + 1)}
+                    onClick={onIncrease}
+                    disabled={value > 98}
                 >
                     <i
                         className={classNames("fa-solid fa-plus", styles.icon)}

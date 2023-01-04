@@ -8,7 +8,9 @@
     --small: 16px;
     --medium: 24px;
     --large: 36px;
-    --x-large: 52px;
+    --x-large: 54px;
+    --xx-large: 81px;
+    --massive: 121.50px;
 
     --neutral-100: rgb(44, 44, 44);
     --neutral-200: rgb(68, 68, 68);
@@ -90,8 +92,8 @@ body {
 
 /* Category display */
 .category-wrapper {
-    background: var(--secondary-100);
-    padding-top: 64px;
+    background: var(--neutral-900);
+    /* padding-top: 64px; */
 }
 
 .category-wrapper a {
@@ -130,8 +132,11 @@ body {
 }
 
 .category-name {
-    font-weight: 500;
+    font-weight: 900;
+    text-transform: uppercase;
     margin-top: 24px;
+    color: var(--neutral-200);
+    font-size: var(--large);
 }
 
 .category-misc {
@@ -317,8 +322,8 @@ body {
 .shop-item-image {
     border-radius: 10px 10px 0 0;
     /* height: 400px; */
-    height: auto;
-    min-width: 100px;
+    height: 150px;
+    min-width: 150px;
     max-width: 17vw;
     object-fit: cover;
     /* height: 300px; */
@@ -535,7 +540,8 @@ td {
 }
 
 .custom-shape-divider-top-1650720074 .shape-fill {
-    fill: var(--neutral-900);
+    fill: var(--primary-100);
+    
 }
 
 .custom-shape-divider-bottom-1650720653 {
@@ -593,12 +599,12 @@ td {
     border: none;
     padding: 8px 16px;
     font-weight: 600;
-    width: 300px;
+    width: 90%;
     transition: all 250ms ease-in-out;
 }
 
 .newsletter-input {
-    width: 300px;
+    width: 90%;
     border: none;
     padding: 8px 16px;
 }
@@ -608,7 +614,7 @@ td {
 }
 
 .sign-up-btn:hover {
-    opacity: 0.5;
+    opacity: 0.8;
     transform: scale(1.1);
 }
 
@@ -637,7 +643,7 @@ td {
     }
     .newsletter-signup-2 {
         border-radius: 20px;
-        width: 400px;
+        width: 75%;
     }
 }
 
@@ -1279,12 +1285,11 @@ footer {
 
     /* Category display */
     .category-wrapper {
-        background: var(--secondary-100);
         display: flex;
         grid-template-columns: auto auto auto;
         gap: 50px;
         justify-content: space-between;
-        padding-top: 40px;
+        padding-top: 0px;
     }
 
     .category-container {
@@ -1313,10 +1318,12 @@ footer {
     }
 
     .category-name {
-        font-weight: 500;
         font-size: 5rem;
-        color: var(--secondary-100);
+        color: var(--secondary-200);
         margin: 0;
+        font-size: var(--x-large);
+        letter-spacing: -2px;
+        opacity: 0.8;
     }
 
     .curve {
@@ -1386,7 +1393,7 @@ footer {
     .category-page-wrapper {
         position: relative;
         padding-top: 20px;
-        background: var(--secondary-100);
+        background: var(--primary-100);
     }
 
     .toggle-category {
@@ -1588,11 +1595,16 @@ footer {
     }
 
     .section {
-        width: 100;
+        width: 75%;
         margin: 0 auto;
     }
 
     .login-container > div {
         width: 50%;
+    }
+    
+    .shop-item-image {
+        min-width: 300px;
+        min-height: 400px;
     }
 }

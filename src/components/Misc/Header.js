@@ -6,7 +6,7 @@ import styles from "./Misc.module.css";
 export default function Header({ title }) {
     return (
         <div className={styles.header}>
-            <h2>{title}</h2>
+            <h1>{title}</h1>
             <Squiggle />
         </div>
     );

@@ -8,14 +8,15 @@ import classnames from "classnames";
 import "./Navigation.scss";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userAtom } from "../atoms/user";
 import { authenticatedAtom } from "../atoms/authenticated";
+import { cartAtom } from "../atoms/cart";
 
 export default function Navigation({
     setCartOpen,
     getTotalItems,
-    cartItems,
+    // cartItems,
     handleLogout,
 }) {
     const [shouldShowBasket, setShouldShowBasket] = useState(true);
@@ -23,6 +24,7 @@ export default function Navigation({
     const [navCollapse, setNavCollapse] = useState();
     const wrapperRef = useRef(null);
     const [user, setUser] = useRecoilState(userAtom);
+    const cartItems = useRecoilValue(cartAtom);
     const [authenticated, setAuthenticated] = useRecoilState(authenticatedAtom);
     const [availableCategories, setAvailableCategories] = useState([
         "Bags",
@@ -201,7 +203,7 @@ export default function Navigation({
                         >
                             <Badge
                                 className="px-2"
-                                badgeContent={getTotalItems(cartItems)}
+                                badgeContent={cartItems.length}
                                 color="error"
                             >
                                 <i class="fas fa-shopping-basket basket-icon"></i>

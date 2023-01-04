@@ -1,11 +1,18 @@
 import classNames from "classnames";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 
 import styles from "./AddressForm.module.css";
 
-export default function AddressForm({ handleBack, handleSubmit }) {
+export default function AddressForm({ handleSubmit }) {
+    const history = useHistory();
+    
+    const handleBack = (e) => {
+        e.preventDefault();
+        history.push("/");
+    };
     return (
         <div className={styles.container}>
             <form className={styles.form}>
@@ -80,10 +87,6 @@ export default function AddressForm({ handleBack, handleSubmit }) {
 }
 
 AddressForm.defaultProps = {
-    handleBack: (e) => {
-        e.preventDefault();
-        console.log("on back");
-    },
     handleSubmit: (e) => {
         e.preventDefault();
         console.log("on submit");

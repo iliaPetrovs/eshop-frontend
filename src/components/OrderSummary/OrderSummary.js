@@ -1,12 +1,14 @@
 import classNames from "classnames";
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { cartAtom } from "../../atoms/cart";
 import { calculateTotal, toCurrency } from "../../utils/currency";
-import items from "../../utils/mocks/items";
 
 import styles from "./OrderSummary.module.css";
 
-export default function OrderSummary({ cartItems, shipping }) {
+export default function OrderSummary({ shipping }) {
     const [showOrderSummary, setShowOrderSummary] = useState(false);
+    const cartItems = useRecoilValue(cartAtom);
 
     return (
         <div className={styles.orderSummaryContainer}>
@@ -77,6 +79,5 @@ export default function OrderSummary({ cartItems, shipping }) {
 }
 
 OrderSummary.defaultProps = {
-    cartItems: items,
     shipping: 0,
 };

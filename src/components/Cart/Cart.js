@@ -7,14 +7,16 @@ import { toCurrency } from "../../utils/currency";
 import styles from "./Cart.module.css";
 import Squiggle from "../Misc/Squiggle";
 import Button from "../Button/Button";
+import { useRecoilValue } from "recoil";
+import { cartAtom } from "../../atoms/cart";
 
 export default function Cart({
-  cartItems,
   addToCart,
   removeFromCart,
-  toggleCart,
+  closeCart,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const cartItems = useRecoilValue(cartAtom);
 
   const calculateTotal = (items) =>
     items.reduce((ack, item) => ack + item.amount * item.price, 0);
@@ -46,7 +48,7 @@ export default function Cart({
           toCurrency(calculateTotal(cartItems))
         )}
       </h2>
-      <Link className={styles.checkout} to="/checkout" onClick={handleCheckout}>
+      <Link className={styles.checkout} to="/checkout" onClick={closeCart}>
         <Button colour="primary" value="Checkout" rounded={true}/>
       </Link>
     </div>

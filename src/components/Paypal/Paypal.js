@@ -2,7 +2,8 @@ import React from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { ButtonWrapper } from "./ButtonWrapper";
 
-export default function Paypal({ cartItems }) {
+export default function Paypal() {
+
     return (
         <div className="paypal-container">
             <PayPalScriptProvider
@@ -15,7 +16,6 @@ export default function Paypal({ cartItems }) {
                 <ButtonWrapper
                     currency="GBP"
                     showSpinner={false}
-                    cartItems={cartItems}
                 />
                 ;
             </PayPalScriptProvider>

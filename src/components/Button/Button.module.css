@@ -6,12 +6,12 @@
 }
 
 .black {
-    background: var(--neutral-200);
+    background: var(--primary-800);
     color: var(--neutral-800);
 }
 
 .black:hover {
-    background: var(--neutral-300);
+    background: var(--primary-700);
 }
 
 .primary {

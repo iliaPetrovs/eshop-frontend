@@ -19,6 +19,7 @@ import Cart from "./components/Cart/Cart";
 import Login from "./components/Auth/Login";
 import RedirectHandler from "./components/Auth/RedirectHandler";
 import { useRecoilState } from "recoil";
+import { cartAtom } from "./atoms/cart";
 import { userAtom } from "./atoms/user";
 import { authenticatedAtom } from "./atoms/authenticated";
 import { getUser } from "./utils/api/user";
@@ -46,6 +47,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useRecoilState(userAtom);
   const [authenticated, setAuthenticated] = useRecoilState(authenticatedAtom);
+  const [cart, setCart] = useRecoilState(cartAtom);
 
   // useEffect(() => {
   //   fetch("http://localhost:8080/pay", {
@@ -102,8 +104,8 @@ function App() {
 
   const CartContext = createContext(cartItems);
 
-  const toggleCart = () => {
-    setCartOpen(!cartOpen);
+  const closeCart = () => {
+    setCartOpen(false);
   };
 
   const getTotalItems = (items) => {
@@ -169,7 +171,7 @@ function App() {
             cartItems={items}
             addToCart={handleAddToCart}
             removeFromCart={handleRemoveFromCart}
-            toggleCart={toggleCart}
+            closeCart={closeCart}
           />
         </Drawer>
       </CartContext.Provider>

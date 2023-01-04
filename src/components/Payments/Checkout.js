@@ -14,8 +14,6 @@ export default function Checkout({ cartItems }) {
         setShowCheckout(true);
     };
 
-    console.log(cartItems)
-
     return (
         <div className="checkout-container">
             {showCheckout ? (
@@ -70,7 +68,7 @@ export default function Checkout({ cartItems }) {
                             ))}
                         </div>
                     </div>
-                    <Paypal cartItems={cartItems} />
+                    <Paypal />
                 </div>
             ) : (
                 <div>

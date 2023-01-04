@@ -39,12 +39,23 @@
     padding-bottom: var(--small);
 }
 
+.header h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--primary-800);
+    letter-spacing: -2px;
+    margin-bottom: 0;
+    /* padding-bottom: var(--small); */
+    font-size: var(--x-large);
+    text-align: center;
+}
+
 .quantityBox {
     display: flex;
     max-width: 100%;
     border-radius: 15px;
     justify-content: center;
-    border: var(--neutral-700) 1px solid;
+    border: var(--neutral-800) 1px solid;
     margin-bottom: 10px;
     padding: 0 !important;
 }
@@ -82,6 +93,19 @@
     border-radius: 15px 0 0 15px;
 }
 
+.increase:disabled, .decrease:disabled {
+    background-color: var(--neutral-300);
+    cursor: not-allowed;
+}
+
+.increase:disabled:hover, .decrease:disabled:hover {
+    background-color: var(--neutral-300);
+}
+
+.increase:disabled:active, .decrease:disabled:active {
+    transform: scale(1);
+}
+
 .quantityBox button:hover {
     background: var(--primary-400);
 }
@@ -92,4 +116,11 @@
 
 .icon {
     color: var(--neutral-800);
+}
+
+@media only screen and (min-width: 1100px) {
+    .header h1 {
+        font-size: var(--x-large);
+        text-align: left;
+    } 
 }

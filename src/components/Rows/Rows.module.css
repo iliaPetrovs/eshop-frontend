@@ -40,6 +40,10 @@
     text-transform: uppercase;
 }
 
+.link:hover {
+    color: var(--secondary-700);
+}
+
 .link::before {
     background-color: var(--secondary-300);
     bottom: 0;

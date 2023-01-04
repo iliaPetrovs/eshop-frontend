@@ -1,27 +1,20 @@
 .btnBasket {
     border-radius: 0 0 10px 10px;
     width: 100%;
-    background: linear-gradient(
-        90deg,
-        var(--secondary-500) 0%,
-        var(--secondary-700) 100%
-    );
+    background: var(--secondary-800);
     color: var(--neutral-900);
     transition: 200ms ease-in-out;
     text-transform: uppercase;
     box-shadow: 0 10px 20px hsl(0 0% 0% / 20%);
     border: none;
     font-size: var(--x-small);
-    font-weight: 200;
+    font-weight: 900;
+    letter-spacing: 1px;
     padding: 8px 8px;
 }
 
 .btnBasket:hover {
-    background: linear-gradient(
-        90deg,
-        var(--secondary-400) 0%,
-        var(--secondary-600) 100%
-    );
+    background: var(--secondary-500);
     transition: all 50ms ease-in-out;
 }
 
@@ -31,11 +24,7 @@
         font-size: var(--small);
     }
     .btnBasket:active {
-        background: linear-gradient(
-            90deg,
-            var(--secondary-300) 0%,
-            var(--secondary-500) 100%
-        );
+        background: var(--secondary-300);
         transform: scale(0.9);
     }
 

@@ -6,7 +6,7 @@ export default function RoundedButton({handleAddToCart, disabled}) {
     return (
         <button
             className={styles.btnBasket}
-            onClick={() => handleAddToCart()}
+            onClick={handleAddToCart}
             disabled={disabled}
         >
             Add to cart
