@@ -11,7 +11,7 @@ import { useQuery } from "react-query";
 import { getProducts } from "../api/getProducts";
 import Loader from "./Misc/Loader";
 
-export default function Home({ handleAddToCart }) {
+export default function Home() {
     const products = useQuery({ queryKey: ["products"], queryFn: getProducts });
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
@@ -23,7 +23,6 @@ export default function Home({ handleAddToCart }) {
         <div>
             {/* <CarouselLoader /> */}
             <CategoryShowcase />
-            {/* <div className="w-75 mx-auto"> */}
             {products?.data ? (
                 <>
                     <Slider items={products?.data} />
@@ -33,7 +32,6 @@ export default function Home({ handleAddToCart }) {
             ) : (
                 <Loader />
             )}
-            {/* </div> */}
             <CTAImage
                 title="Hello there"
                 body="Stop reading, nothing catchy here"

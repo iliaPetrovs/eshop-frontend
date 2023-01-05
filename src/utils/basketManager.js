@@ -1,7 +1,11 @@
 export const setStorage = (cart) => {
-    localStorage.setItem("FUJI_SESSION", JSON.stringify(cart));
+    if (typeof window !== "undefined") {
+        window.localStorage.setItem("FUJI_SESSION", JSON.stringify(cart));
+    }
 };
 
 export const getStorage = () => {
-    return JSON.parse(localStorage.getItem("FUJI_SESSION")) || [];
+    if (typeof window !== "undefined") {
+        return JSON.parse(localStorage.getItem("FUJI_SESSION")) || [];
+    }
 };

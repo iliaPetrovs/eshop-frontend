@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { Modal } from "@material-ui/core";
 import { Card, Table, Image, ButtonGroup, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { toCurrency } from "../../utils/currency";
 import classNames from "classnames";
 import EditProductForm from "./EditProductForm";

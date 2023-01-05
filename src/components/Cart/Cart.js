@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Loader from "../Misc/Loader";
 import { toCurrency } from "../../utils/currency";
 

@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Badge, ButtonBase } from "@material-ui/core";
 import { StyledButton } from "../App.style";
 import { Button } from "react-bootstrap";
 import classnames from "classnames";
-import "./Navigation.scss";
+// import "./Navigation.s";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userAtom } from "../atoms/user";
 import { authenticatedAtom } from "../atoms/authenticated";
 import { cartAtom } from "../atoms/cart";
+import { AiOutlineShoppingCart } from "react-icons/fa";
 
 export default function Navigation({
     setCartOpen,
@@ -76,7 +76,7 @@ export default function Navigation({
                             <li className="nav-item">
                                 <Link
                                     className="nav-link"
-                                    to="/"
+                                    href="/"
                                     onClick={handleNav}
                                 >
                                     HOME
@@ -94,7 +94,7 @@ export default function Navigation({
                                             return (
                                                 <li key={index}>
                                                     <Link
-                                                        to={`/shop/${category.toLowerCase()}`}
+                                                        href={`/shop/${category.toLowerCase()}`}
                                                         onClick={handleNav}
                                                     >
                                                         {category}
@@ -107,7 +107,7 @@ export default function Navigation({
                             <li className="nav-item">
                                 <Link
                                     className="nav-link"
-                                    to="/about"
+                                    href="/about"
                                     onClick={handleNav}
                                 >
                                     ABOUT
@@ -117,7 +117,7 @@ export default function Navigation({
                                 <li className="nav-item nav-item-responsive">
                                     <Link
                                         className="nav-link"
-                                        to="/addProduct"
+                                        href="/addProduct"
                                         onClick={handleNav}
                                     >
                                         ADD
@@ -128,7 +128,7 @@ export default function Navigation({
                                 <li className="nav-item nav-item-responsive">
                                     <Link
                                         className="nav-link"
-                                        to="/dashboard"
+                                        href="/dashboard"
                                         onClick={handleNav}
                                     >
                                         DASHBOARD
@@ -146,7 +146,7 @@ export default function Navigation({
                                 ) : (
                                     <Link
                                         className="nav-link"
-                                        to="/login"
+                                        href="/login"
                                         onClick={handleNav}
                                     >
                                         LOGIN
@@ -163,7 +163,7 @@ export default function Navigation({
                                 <li>
                                     <Link
                                         className="nav-link"
-                                        to="/addProduct"
+                                        href="/addProduct"
                                         onClick={handleNav}
                                     >
                                         Add
@@ -174,7 +174,7 @@ export default function Navigation({
                                 <li>
                                     <Link
                                         className="nav-link"
-                                        to="/dashboard"
+                                        href="/dashboard"
                                         onClick={handleNav}
                                     >
                                         Dashboard
@@ -183,13 +183,16 @@ export default function Navigation({
                             )}
                             <li>
                                 {authenticated ? (
-                                    <li className="nav-link" onClick={handleLogout}>
+                                    <li
+                                        className="nav-link"
+                                        onClick={handleLogout}
+                                    >
                                         Logout
                                     </li>
                                 ) : (
                                     <Link
                                         className="nav-link"
-                                        to="/login"
+                                        href="/login"
                                         onClick={handleNav}
                                     >
                                         Login
@@ -203,10 +206,11 @@ export default function Navigation({
                         >
                             <Badge
                                 className="px-2"
-                                badgeContent={cartItems.length}
+                                badgeContent={cartItems?.length}
                                 color="error"
                             >
-                                <i class="fas fa-shopping-basket basket-icon"></i>
+                                a
+                                {/* <AiOutlineShoppingCart /> */}
                             </Badge>
                         </button>
                     </div>

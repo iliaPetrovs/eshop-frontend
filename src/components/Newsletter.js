@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "./Newsletter.scss";
+// import "./Newsletter.scss";
 
 export default function Newsletter() {
   return (

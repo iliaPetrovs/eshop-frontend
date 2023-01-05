@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import styles from "./Rows.module.css";
 
@@ -15,7 +15,7 @@ export default function Rows({ rows }) {
                                 <img src={row.image} alt="" />
                                 <h2>{row.title}</h2>
                                 <p>{row.body}</p>
-                                <Link className={styles.link} to={row.href}>
+                                <Link className={styles.link} href={row.href}>
                                     {row.link}
                                 </Link>
                             </div>

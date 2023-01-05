@@ -2,7 +2,7 @@ import React from "react";
 import coyote from "../assets/images/coyoteSticker.webp";
 import noface from "../assets/images/nofacePatch.webp";
 import siamese from "../assets/images/siameseBadge.webp";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function CategoryShowcase() {
   const categories = [
@@ -13,9 +13,9 @@ export default function CategoryShowcase() {
   return (
     <div className="category-wrapper pb-1">
       {categories.map((cat) => (
-        <Link to={`/shop/${cat.name.toLowerCase()}`}>
+        <Link href={`/shop/${cat.name.toLowerCase()}`}>
           <div className="category-container" key={cat.name}>
-            <img className="category-image" src={cat.image} />
+            <img className="category-image" src={cat.image.src} />
             <div className="category-name-container">
               <h3 className="category-name">{cat.name}</h3>
               <div class="squiggle-holder">

@@ -1,6 +1,6 @@
 import React from "react";
 import VanillaTilt from "vanilla-tilt";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import StockDisplayer from "../Misc/StockDisplayer";
 import RoundedButton from "../RoundedButton/RoundedButton";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -49,7 +49,7 @@ export default function ShopItem({ product, addedPadding }) {
             <div className="product-image-container">
                 <div className="product-image">
                     <Link
-                        to={{
+                        href={{
                             pathname: `/product/${product.id}`,
                             state: { product },
                         }}
@@ -74,7 +74,7 @@ export default function ShopItem({ product, addedPadding }) {
 
             <div className="mt-2">
                 <Link
-                    to={{
+                    href={{
                         pathname: `/product/${product.id}`,
                         state: { product },
                     }}

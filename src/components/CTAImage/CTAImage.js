@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Button from "../Button/Button";
 
 import styles from "./CTAImage.module.css";
@@ -22,7 +22,7 @@ export default function CTAImage({ title, subtitle, body, link, image }) {
                         </div>
                         <p>{body}</p>
                         <div className={styles.cta}>
-                            <Link to={link}>
+                            <Link href={link}>
                                 <Button value="Click here" />
                             </Link>
                         </div>
