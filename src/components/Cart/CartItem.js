@@ -10,27 +10,27 @@ import { cartAtom } from '../../atoms/cart'
 import { setStorage } from '../../utils/basketManager'
 
 export default function CartItem ({ item }) {
-    const [cartItems, setCartItems] = useRecoilState(cartAtom)
-    const onIncrease = () => {
-        const newItem = { ...item, amount: item.amount + 1 }
-        const idx = cartItems.indexOf(item)
-        const newCart = [...cartItems]
-        newCart.splice(idx, 1, newItem)
+  const [cartItems, setCartItems] = useRecoilState(cartAtom)
+  const onIncrease = () => {
+    const newItem = { ...item, amount: item.amount + 1 }
+    const idx = cartItems.indexOf(item)
+    const newCart = [...cartItems]
+    newCart.splice(idx, 1, newItem)
 
-        setStorage(newCart)
-        setCartItems(newCart)
-    }
+    setStorage(newCart)
+    setCartItems(newCart)
+  }
 
-    const onDecrease = () => {
-        const newItem = { ...item, amount: item.amount - 1 }
-        const idx = cartItems.indexOf(item)
-        const newCart = [...cartItems]
-        newCart.splice(idx, 1, newItem)
+  const onDecrease = () => {
+    const newItem = { ...item, amount: item.amount - 1 }
+    const idx = cartItems.indexOf(item)
+    const newCart = [...cartItems]
+    newCart.splice(idx, 1, newItem)
 
-        setCartItems(newCart)
-        setStorage(newCart)
-    }
-    return (
+    setCartItems(newCart)
+    setStorage(newCart)
+  }
+  return (
         <Wrapper>
             <div className="container">
                 <div className={classNames(styles.desc, 'row')}>
@@ -39,8 +39,8 @@ export default function CartItem ({ item }) {
                         <p className={styles.price}>
                             {item.amount} X{' '}
                             {new Intl.NumberFormat('en-GB', {
-                                style: 'currency',
-                                currency: 'GBP'
+                              style: 'currency',
+                              currency: 'GBP'
                             }).format(item.price)}
                         </p>
                         <p className={styles.subtotal}>
@@ -64,5 +64,5 @@ export default function CartItem ({ item }) {
                 </div>
             </div>
         </Wrapper>
-    )
+  )
 }
